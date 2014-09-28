@@ -8,7 +8,7 @@
  *
  * ------------------------------------------------------------------------
  */
-class Home extends Application {
+class Explore extends Application {
 
     function __construct() {
         parent::__construct();
@@ -19,42 +19,42 @@ class Home extends Application {
     //-------------------------------------------------------------
 
     function index() {
-        $this->data['pagebody'] = 'homepage';    // this is the view we want shown
-        // build the list of authors, to pass on to our view
+        $this->data['pagebody'] = 'exploreview';    // this is the view we want shown
+        // build the list of options, to pass on to our view
         $source = $this->quotes->all();
-        $authors = array();
+        $options = array();
         foreach ($source as $record) {
-            $authors[] = array('name' => $record['name'], 'image' => $record['image'], 'href' => $record['where']);
+            $options[] = array('name' => $record['name'], 'image' => $record['image'], 'href' => $record['where']);
         }
-        //$this->data['authors'] = $authors;
+        $this->data['options'] = $options;
 
         $this->render();
     }
 	
 	function sleep($num){
 		$this->data['pagebody'] = 'justone';
-        $source = $this->quotes->get($num);
-		$this->data['mug'] = $source['mug'];
-        $this->data['what'] = $source['what'];
-		$this->data['who'] = $source['who'];
+        $source = $this->quotes->getData($num);
+		$this->data['image'] = $source['image'];
+        $this->data['description'] = $source['description'];
+		$this->data['name'] = $source['name'];
         $this->render();
 	}
 	
 	function eat($num){
 		$this->data['pagebody'] = 'justone';
-        $source = $this->quotes->get($num);
-		$this->data['mug'] = $source['mug'];
-        $this->data['what'] = $source['what'];
-		$this->data['who'] = $source['who'];
+        $source = $this->quotes->getData($num);
+		$this->data['image'] = $source['image'];
+        $this->data['description'] = $source['description'];
+		$this->data['name'] = $source['name'];
         $this->render();
 	}
 	
 	function play($num){
 		$this->data['pagebody'] = 'justone';
-        $source = $this->quotes->get($num);
-		$this->data['mug'] = $source['mug'];
-        $this->data['what'] = $source['what'];
-		$this->data['who'] = $source['who'];
+        $source = $this->quotes->getData($num);
+		$this->data['image'] = $source['image'];
+        $this->data['description'] = $source['description'];
+		$this->data['name'] = $source['name'];
         $this->render();
 	}
 }
