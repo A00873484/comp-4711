@@ -37,26 +37,13 @@
 | in the URL cannot be matched to a valid route.
 |
 */
-// routes the default to the welcome screen.
-$route['default_controller'] = "welcome"; 
+$route['default_controller'] = "home"; 
 
-// routes /sleep to controller first function zzz.
-$route['sleep'] = "first/zzz"; 
-
-// routes /lock/"replace with anything" to controller welcome function shucks.
-$route['lock/(:any)'] = "welcome/shucks"; 
-
-// routes /show/"replace with number representing a page" to controller first, function gimme, with input $1(number after show).
-$route['show/(:num)'] = "first/gimme/$1";  
-
-// routes /dunno to controller guess.
-$route['dunno'] = "guess";
-
-// routes "any 4 letters"/bingo to controller bingo.
-$route['[A-Za-z]{4}/bingo'] = "bingo";
-
-// routes comp"anynumber"/anything to controller bingo and function wisdom.
-$route['comp[0-9]+/(:any)'] = "bingo/wisdom";
+$route['home'] = "home";
+$route['about'] = "about";
+$route['eat'] = "explore/eat";
+$route['sleep'] = "explore/sleep";
+$route['play'] = "explore/play";
 
 $route['404_override'] = '';
 
