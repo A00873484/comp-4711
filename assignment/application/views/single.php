@@ -155,46 +155,12 @@
 			</div>
 			<!-- header outer wrapper -->
 			<div class="content-outer-wrapper">
-				<div class="page-full-wrapper">
-					<div>
-						<div class="page-wrapper single-page ">
-							<div class="gdl-page-item">
-								<div class="container">
-									<div class="row">
-										<div class="twelve columns mb0">
-											<div class="gdl-page-content"></div>
-										</div>
-										<div class="clear"></div>
-									</div>
-								</div>
-								<div class="container">
-									<div class="row">
-										<div class="twelve columns">
-											<div class="title-item-wrapper">
-												<div class="title-item-gimmick left" style="width: 316px;"></div>
-												<h2 class="title-item-header">
-													<span>Explore ... JAPAN!</span>
-												</h2>
-												<div class="title-item-gimmick right" style="width: 316px;"></div>
-											</div>
-										</div>
-										<div class="clear"></div>
-									</div>
-								</div>
-								<div class="container">
-									<div class="row">
-										<div class="twelve columns package-item-class package-item-class-1 mb35">
-											<div class="package-item-holder">
-												<div class="row">
-													{options}
-													<div class="four columns gdl-package-grid2">
-														<div class="package-content-wrapper">
-															<div class="package-thumbnail-outer-wrapper">
+				
+				<div class="package-thumbnail-outer-wrapper">
 																<div class="package-media-wrapper gdl-image">
 																	<a href="{href}">
 																		<img src="/img/{image}" alt="">
-																		<div class="package-ribbon-wrapper">
-																			<div class="package-type normal-type">Learn More</div>
+																		<div class="package-ribbon-wrapper"> 
 																			<div class="clear"></div>
 																			<div class="package-type-gimmick"></div>
 																			<div class="clear"></div>
@@ -204,28 +170,12 @@
 																<div class="package-title-wrapper">
 																	<div class="package-title-overlay"></div>
 																	<h2 class="package-title">
-																		<a href="/explore">{name}</a>
+																		<div >{name}<br><br>{description}</div>
 																	</h2>
 																</div>
 															</div>
-															<div class="package-date"> <i class="icon-time"></i>
-																11 Nov 2014 - 22 Nov 2014
-															</div>
-														</div>
-													</div>
-													{/options}
-													<div class="clear"></div>
-												</div>
-											</div>
-											<div class="clear"></div>
-										</div>
-										<div class="clear"></div>
-									</div>
-								</div>
-						<!-- page wrapper -->
-					</div>
-					<!-- post class -->
-				</div>
+				
+				
 				<!-- page-full-wrapper -->
 			</div>
 			<div class="footer-wrapper boxed-style">

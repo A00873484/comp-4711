@@ -32,7 +32,7 @@ class Explore extends Application {
     }
 	
 	function sleep($num){
-		$this->data['pagebody'] = 'justone';
+		$this->data['pagebody'] = 'single';
         $source = $this->quotes->getData($num);
 		$this->data['image'] = $source['image'];
         $this->data['description'] = $source['description'];
@@ -41,7 +41,7 @@ class Explore extends Application {
 	}
 	
 	function eat($num){
-		$this->data['pagebody'] = 'justone';
+		$this->data['pagebody'] = 'single';
         $source = $this->quotes->getData($num);
 		$this->data['image'] = $source['image'];
         $this->data['description'] = $source['description'];
@@ -50,7 +50,7 @@ class Explore extends Application {
 	}
 	
 	function play($num){
-		$this->data['pagebody'] = 'justone';
+		$this->data['pagebody'] = 'single';
         $source = $this->quotes->getData($num);
 		$this->data['image'] = $source['image'];
         $this->data['description'] = $source['description'];

@@ -68,7 +68,7 @@
 												</a>
 											</li>
 											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-												<a href="/explore/" class="sf-with-ul">
+												<a href="/explore" class="sf-with-ul">
 													Explore
 												</a>
 											</li>
@@ -197,7 +197,7 @@
 							<div class="under-slider-caption">
 								Never been outside North America? You're missing out.
 							</div>
-							<a href="/explore/" class="under-slider-button gdl-button large">Explore</a>
+							<a href="/explore" class="under-slider-button gdl-button large">Explore</a>
 						</div>
 					</div>
 				</div>
