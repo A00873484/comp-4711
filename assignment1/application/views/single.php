@@ -233,15 +233,13 @@
 														<div class="package-content-wrapper">
 															<div class="package-thumbnail-outer-wrapper">
 																<div class="package-media-wrapper gdl-image">
-																	<a href="{href}">
-																		<img src="/img/{image}" alt="">
-																		<div class="package-ribbon-wrapper">
-																			<div class="package-type normal-type">Learn More</div>
-																			<div class="clear"></div>
-																			<div class="package-type-gimmick"></div>
-																			<div class="clear"></div>
-																		</div>
-																	</a>
+																	<img src="/img/{image}" alt="">
+																	<div class="package-ribbon-wrapper">
+																		<div class="package-type normal-type">Learn More</div>
+																		<div class="clear"></div>
+																		<div class="package-type-gimmick"></div>
+																		<div class="clear"></div>
+																	</div>
 																</div>
 																<div class="package-title-wrapper">
 																	<div class="package-title-overlay"></div>
