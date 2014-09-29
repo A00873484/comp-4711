@@ -8,7 +8,7 @@
  *
  * ------------------------------------------------------------------------
  */
-class Welcome extends Application {
+class Home extends Application {
 
     function __construct() {
         parent::__construct();
@@ -24,22 +24,12 @@ class Welcome extends Application {
         $source = $this->quotes->all();
         $authors = array();
         foreach ($source as $record) {
-            $authors[] = array('name' => $record['name'], 'image' => $record['image'], 'href' => $record['home']);
+            $authors[] = array('name' => $record['name'], 'image' => $record['image'], 'href' => $record['where']);
         }
         //$this->data['authors'] = $authors;
 
         $this->render();
     }
-	
-	//displays the second quote page
-	function shucks(){
-		$this->data['pagebody'] = 'justone';
-        $source = $this->quotes->get(2);
-		$this->data['mug'] = $source['mug'];
-        $this->data['what'] = $source['what'];
-		$this->data['who'] = $source['who'];
-        $this->render();
-	}
 
 }
 
