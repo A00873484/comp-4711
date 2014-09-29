@@ -24,15 +24,15 @@ class Quotes extends CI_Model {
             'description' => 'tasty teriaki chicken', 'catagory' => 'eat'),
         array('id' => '10', 'name' => 'dasabo', 'image' => '15364398232_5dcf3e502f_k.jpg', 'where'=>'/explore/eat/5',
             'description' => 'has good food', 'catagory' => 'eat'),
-        array('id' => '11', 'name' => 'hotel No 1', 'image' => '15368957195_9c0bf2b586_o.jpg', 'where'=>'/explore/sleep',
+        array('id' => '11', 'name' => 'hotel No 1', 'image' => '15368957195_9c0bf2b586_o.jpg', 'where'=>'/explore/sleep/1',
             'description' => 'best hotel ever.', 'catagory' => 'sleep'),
-        array('id' => '12', 'name' => 'motel No 2', 'image' => '15041201036_270b5447d9_o.jpg', 'where'=>'/explore/sleep',
+        array('id' => '12', 'name' => 'motel No 2', 'image' => '15041201036_270b5447d9_o.jpg', 'where'=>'/explore/sleep/2',
             'description' => 'a motel', 'catagory' => 'sleep'),
-        array('id' => '13', 'name' => 'bed and breakfast', 'image' => '15338797172_b072f6eeb5_o.jpg', 'where'=>'/explore/sleep',
+        array('id' => '13', 'name' => 'bed and breakfast', 'image' => '15338797172_b072f6eeb5_o.jpg', 'where'=>'/explore/sleep/3',
             'description' => 'bed and breakfast japanesey style.', 'catagory' => 'sleep'),
-        array('id' => '14', 'name' => 'hotel No 2', 'image' => '15153292330_ba71b36d85_o.jpg', 'where'=>'/explore/sleep',
+        array('id' => '14', 'name' => 'hotel No 2', 'image' => '15153292330_ba71b36d85_o.jpg', 'where'=>'/explore/sleep/4',
             'description' => 'less expensive then hotel No 1', 'catagory' => 'sleep'),
-        array('id' => '15', 'name' => 'tokashiki ave', 'image' => '15153292330_ba71b36d85_o.jpg', 'where'=>'/explore/sleep',
+        array('id' => '15', 'name' => 'tokashiki ave', 'image' => '15153292330_ba71b36d85_o.jpg', 'where'=>'/explore/sleep/5',
             'description' => 'its free.', 'catagory' => 'sleep')
     );
 	

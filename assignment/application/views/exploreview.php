@@ -69,7 +69,7 @@
 												</a>
 											</li>
 											<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children">
-												<a href="/explore/" class="sf-with-ul">
+												<a href="/explore" class="sf-with-ul">
 													Explore
 												</a>
 											</li>

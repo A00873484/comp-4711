@@ -31,9 +31,9 @@ class Explore extends Application {
         $this->render();
     }
 	
-	function sleep($num){
+	function sleep(){
 		$this->data['pagebody'] = 'single';
-        $source = $this->quotes->getData($num);
+        $source = $this->quotes->getData(10);
 		$this->data['image'] = $source['image'];
         $this->data['description'] = $source['description'];
 		$this->data['name'] = $source['name'];
@@ -42,7 +42,7 @@ class Explore extends Application {
 	
 	function eat($num){
 		$this->data['pagebody'] = 'single';
-        $source = $this->quotes->getData($num);
+        $source = $this->quotes->getData($num+5);
 		$this->data['image'] = $source['image'];
         $this->data['description'] = $source['description'];
 		$this->data['name'] = $source['name'];

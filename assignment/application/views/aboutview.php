@@ -162,23 +162,23 @@
 			<div class="content-outer-wrapper">
 				
 				<div class="package-thumbnail-outer-wrapper">
-																<div class="package-media-wrapper gdl-image">
-																	<a href="{href}">
-																		<img src="/img/{image}" alt="">
-																		<div class="package-ribbon-wrapper"> 
-																			<div class="clear"></div>
-																			<div class="package-type-gimmick"></div>
-																			<div class="clear"></div>
-																		</div>
-																	</a>
-																</div>
-																<div class="package-title-wrapper">
-																	<div class="package-title-overlay"></div>
-																	<h2 class="package-title">
-																		<div >{name}<br><br>{description}</div>
-																	</h2>
-																</div>
-															</div>
+					<div class="package-media-wrapper gdl-image">
+						<a href="{href}">
+							<img src="/img/{image}" alt="">
+							<div class="package-ribbon-wrapper"> 
+								<div class="clear"></div>
+								<div class="package-type-gimmick"></div>
+								<div class="clear"></div>
+							</div>
+						</a>
+					</div>
+					<div class="package-title-wrapper">
+						<div class="package-title-overlay"></div>
+						<h2 class="package-title">
+							<div >{name}<br><br>{description}</div>
+						</h2>
+					</div>
+				</div>
 				
 				
 				<!-- page-full-wrapper -->
