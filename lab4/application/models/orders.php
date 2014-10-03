@@ -26,17 +26,21 @@ class Orders extends MY_Model {
 
     // calculate the total for an order
     function total($num) {
-        $items = $this->orders->get($num);
-
+        $items = $this->orderitems->some('order', $num);
+		
         if($items == null) {
             return 0;
         }
-
+		$sum = 0;
         foreach($items as $item) {
-            $quantity = $this->orderitems->get($num, $item)->quantity;
-            $price = $this->menu->get($item)->price;
+            $quantity = $item->quantity;
+            $price = $this->menu->get($item->item)->price;
             $sum += $quantity * $price;
         }
+		$amount = $this->orders->get($num);
+		$amount->total = $sum;
+		$this->orders->update($amount);
+		
         return $sum;
     }
 
@@ -47,7 +51,7 @@ class Orders extends MY_Model {
 
     // cancel an order
     function flush($num) {
-        
+        $this->orders->remove(get($num));
     }
 
     // validate an order

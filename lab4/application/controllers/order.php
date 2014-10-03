@@ -55,21 +55,30 @@ class Order extends Application {
 
     // checkout
     function checkout($order_num) {
-        $this->data['title'] = 'Checking Out';
+		
+		$this->data['title'] = 'Checking Out';
         $this->data['pagebody'] = 'show_order';
         $this->data['order_num'] = $order_num;
 
         $total = $this->orders->total($order_num);
         $items = $this->orderitems->some('order', $order_num);
+		//$hold = $items
+		foreach($items as $item){
+			$hold[] = array(
+				'quantity' => $item->quantity,
+				'code' => $this->menu->get($item->item)->name
+			);
+		}
+		
         $this->data['order_num'] = $order_num;
         $this->data['total'] = $total;
-        $this->data['items'] = $items;
-        print_r($items);
+        $this->data['items'] = $hold;		
+		
         $this->render();
     }
 
     // proceed with checkout
-    function proceed($order_num) {
+    function commit($order_num) {
         $item = $this->orders->get($order_num);
         $item->status = 'c';
         $this->orders->update($item);
