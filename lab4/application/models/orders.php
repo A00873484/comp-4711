@@ -14,12 +14,30 @@ class Orders extends MY_Model {
 
     // add an item to an order
     function add_item($num, $code) {
-        
+        if($this->orderitems->exists($num, $code)) {
+            $existing_item = $this->orderitems->get($num, $code);
+            $existing_item->quantity += 1;
+            $this->orderitems->update($existing_item);
+        } else {
+            $new_item = array('order' => $num, 'item' => $code, 'quantity' => 1);
+            $this->orderitems->add($new_item);
+        }
     }
 
     // calculate the total for an order
     function total($num) {
-        return 0.0;
+        $items = $this->orders->get($num);
+
+        if($items == null) {
+            return 0;
+        }
+
+        foreach($items as $item) {
+            $quantity = $this->orderitems->get($num, $item)->quantity;
+            $price = $this->menu->get($item)->price;
+            $sum += $quantity * $price;
+        }
+        return $sum;
     }
 
     // retrieve the details for an order

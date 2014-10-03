@@ -17,9 +17,11 @@ class Order extends Application {
 
     // start a new order
     function neworder() {
-        //FIXME
-
-        redirect('/order/display_menu/' . $order_num);
+        $dateTime = new DateTime();
+        $mysqldate = $dateTime->format("Y-m-d H:i:s");
+        $order_num = $this->orders->highest() + 1;
+        $this->orders->add(array('num' => $order_num, 'date' => $mysqldate, 'status' => 'a', 'total' => 0));
+        redirect('/order/display_menu/' . $order_num);   
     }
 
     // add to an order
@@ -41,13 +43,13 @@ class Order extends Application {
 
     // make a menu ordering column
     function make_column($category) {
-        //FIXME
+        $items = $this->menu->some('category', $category);
         return $items;
     }
 
     // add an item to an order
     function add($order_num, $item) {
-        //FIXME
+        $this->orders->add_item($order_num, $item);
         redirect('/order/display_menu/' . $order_num);
     }
 
@@ -56,14 +58,21 @@ class Order extends Application {
         $this->data['title'] = 'Checking Out';
         $this->data['pagebody'] = 'show_order';
         $this->data['order_num'] = $order_num;
-        //FIXME
 
+        $total = $this->orders->total($order_num);
+        $items = $this->orderitems->some('order', $order_num);
+        $this->data['order_num'] = $order_num;
+        $this->data['total'] = $total;
+        $this->data['items'] = $items;
+        print_r($items);
         $this->render();
     }
 
     // proceed with checkout
     function proceed($order_num) {
-        //FIXME
+        $item = $this->orders->get($order_num);
+        $item->status = 'c';
+        $this->orders->update($item);
         redirect('/');
     }
 
