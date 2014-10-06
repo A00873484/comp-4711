@@ -31,7 +31,6 @@ class Order extends Application {
 
         $this->data['pagebody'] = 'show_menu';
         $this->data['order_num'] = $order_num;
-        //FIXME
 
         // Make the columns
         $this->data['meals'] = $this->make_column('m');
@@ -62,11 +61,17 @@ class Order extends Application {
 
         $total = $this->orders->total($order_num);
         $items = $this->orderitems->some('order', $order_num);
-		//$hold = $items
+		if($items != null)
 		foreach($items as $item){
 			$hold[] = array(
 				'quantity' => $item->quantity,
 				'code' => $this->menu->get($item->item)->name
+			);
+		}
+		else{
+			$hold[] = array(
+				'quantity' => "No items are selected.",
+				'code' => ""
 			);
 		}
 		
@@ -87,7 +92,6 @@ class Order extends Application {
 
     // cancel the order
     function cancel($order_num) {
-        //FIXME
         redirect('/');
     }
 
