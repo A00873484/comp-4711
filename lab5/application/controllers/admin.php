@@ -26,9 +26,9 @@ class Admin extends Application {
         $items = array();
         foreach ($menuitems as $item) {
             $this1 = array(
+                'code' => $item->code,
                 'name' => $item->name,
                 'description' => $item->description,
-                'price' => $item->price,
                 'picture' => $item->picture
             );
             $items[] = $this1;
