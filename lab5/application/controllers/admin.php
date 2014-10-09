@@ -16,8 +16,8 @@ class Admin extends Application {
     }
 
     function display() {
-        $this->data['title'] = 'Jim\'s Joint! - Administration';
-        $this->data['pagebody'] = 'admin/show_menu.php';
+        $this->data['title'] = 'Jim\'s Joint Administration!';
+        $this->data['pagebody'] = 'admin/show_menu';
 
         // Get all the completed orders
         $menuitems = $this->menu->all();
@@ -38,6 +38,36 @@ class Admin extends Application {
         $this->data['items'] = $items;
         
         $this->render();
+    }
+
+    function list2() {
+        $this->data['title'] = 'Jim\'s Joint Administration (view 2)!';
+        $this->data['pagebody'] = 'admin/listitem';
+
+        // Get all the completed orders
+        $menuitems = $this->menu->all();
+        $itemrows = "";
+        // Build a multi-dimensional array for reporting
+        $items = array();
+        foreach ($menuitems as $item) {
+            $itemrows .= $this->parser->parse('admin/listitem2', $item, true);
+        }
+
+        // and pass these on to the view
+        $this->data['themeat'] = $itemrows;
+        
+        $this->render();
+    }
+
+    function edit3($code) {
+        $this->data['title'] = 'Jim\'s Joint Maintenance!';
+        $this->data['pagebody'] = 'admin/edit';
+        $this->data['code'] = $code;
+        $this->render();
+    }
+
+    function post3() {
+        // Handle edit form
     }
 
 }
