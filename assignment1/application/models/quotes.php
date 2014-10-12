@@ -1,48 +1,35 @@
 <?php
 
-
+/**
+ * This is a "CMS" model for quotes, but with bogus hard-coded data
+ *
+ * @author jim
+ */
 class Quotes extends CI_Model {
-	
+
+    // The data comes from http://www.quotery.com/top-100-funny-quotes-of-all-time/?PageSpeed=noscript
     var $data = array(
-        array('id' => '1', 'name' => 'Hiking', 'image' => 'mount-fuji-sunset2.jpg', 'where'=>'/explore/play/1',
-            'description' => 'Hike the world famous mountain.', 'catagory' => 'play'),
-        array('id' => '2', 'name' => 'walking', 'image' => '15153292330_ba71b36d85_o.jpg', 'where'=>'/explore/play/2',
-            'description' => 'look at pretty flowers', 'catagory' => 'play'),
-        array('id' => '3', 'name' => 'strolling', 'image' => '15338797172_b072f6eeb5_o.jpg', 'where'=>'/explore/play/3',
-            'description' => 'look at pretty scenery', 'catagory' => 'play'),
-        array('id' => '4', 'name' => 'pretend to be japanese', 'image' => '15367895181_b88f912991_k.jpg', 'where'=>'/explore/play/4',
-            'description' => 'it\'s fun', 'catagory' => 'play'),
-        array('id' => '5', 'name' => 'listen', 'image' => '15168253195_7k0bf2b522_o.jpg', 'where'=>'/explore/play/5',
-            'description' => 'to people speak japanese.', 'catagory' => 'play'),
-        array('id' => '6', 'name' => 'dasabi', 'image' => '8072307316_cd73fe4534_o.jpg', 'where'=>'/explore/eat/1',
-            'description' => 'Tasty food', 'catagory' => 'eat'),
-        array('id' => '7', 'name' => 'raman place', 'image' => '8069223304_a8d4351430_o.jpg', 'where'=>'/explore/eat/2',
-            'description' => 'has good raman', 'catagory' => 'eat'),
-        array('id' => '8', 'name' => 'sushi place', 'image' => '8072308492_f1f6c53484_o.jpg', 'where'=>'/explore/eat/3',
-            'description' => 'has good sushi', 'catagory' => 'eat'),
-        array('id' => '9', 'name' => 'teriaki place ', 'image' => '8072314245_43d8c62a8f_o.jpg', 'where'=>'/explore/eat/4',
-            'description' => 'tasty teriaki chicken', 'catagory' => 'eat'),
-        array('id' => '10', 'name' => 'dasabo', 'image' => '15364398232_5dcf3e502f_k.jpg', 'where'=>'/explore/eat/5',
-            'description' => 'has good food', 'catagory' => 'eat'),
-        array('id' => '11', 'name' => 'hotel No 1', 'image' => '15368957195_9c0bf2b586_o.jpg', 'where'=>'/explore/sleep',
-            'description' => 'best hotel ever.', 'catagory' => 'sleep'),
-        array('id' => '12', 'name' => 'motel No 2', 'image' => '15041201036_270b5447d9_o.jpg', 'where'=>'/explore/sleep',
-            'description' => 'a motel', 'catagory' => 'sleep'),
-        array('id' => '13', 'name' => 'bed and breakfast', 'image' => '15338797172_b072f6eeb5_o.jpg', 'where'=>'/explore/sleep',
-            'description' => 'bed and breakfast japanesey style.', 'catagory' => 'sleep'),
-        array('id' => '14', 'name' => 'hotel No 2', 'image' => '15153292330_ba71b36d85_o.jpg', 'where'=>'/explore/sleep',
-            'description' => 'less expensive then hotel No 1', 'catagory' => 'sleep'),
-        array('id' => '15', 'name' => 'tokashiki ave', 'image' => '15153292330_ba71b36d85_o.jpg', 'where'=>'/explore/sleep',
-            'description' => 'its free.', 'catagory' => 'sleep')
+        array('id' => '1', 'who' => 'Bob Monkhouse', 'mug' => 'bob-monkhouse-150x150.jpg', 'where'=>'/sleep',
+            'what' => 'When I die, I want to go peacefully like my grandfather did–in his sleep. Not yelling and screaming like the passengers in his car.'),
+        array('id' => '2', 'who' => 'Elayne Boosler', 'mug' => 'elayne-boosler-150x150.jpg', 'where'=>'/lock/em/up',
+            'what' => 'I have six locks on my door all in a row. When I go out, I lock every other one. I figure no matter how long somebody stands there picking the locks, they are always locking three.'),
+        array('id' => '3', 'who' => 'Mark Russell', 'mug' => 'mark-russell-150x150.jpg', 'where'=>'/show/3',
+            'what' => 'The scientific theory I like best is that the rings of Saturn are composed entirely of lost airline luggage.'),
+        array('id' => '4', 'who' => 'Anonymous', 'mug' => 'Anonymous-150x150.jpg', 'where'=>'/dunno',
+            'what' => 'How do you get a sweet little 80-year-old lady to say the F word? Get another sweet little 80-year-old lady to yell “BINGO!”'),
+        array('id' => '5', 'who' => 'Socrates', 'mug' => 'socrates-150x150.jpg', 'where'=>'/wise/bingo',
+            'what' => 'By all means, marry. If you get a good wife, you’ll become happy; if you get a bad one, you’ll become a philosopher.'),
+        array('id' => '6', 'who' => 'Isaac Asimov', 'mug' => 'isaac-asimov-150x150.jpg', 'where'=>'/comp4711/wisdom',
+            'what' => 'Those people who think they know everything are a great annoyance to those of us who do.')
     );
-	
+
     // Constructor
     public function __construct() {
         parent::__construct();
     }
 
     // retrieve a single quote
-    public function getData($which) {
+    public function get($which) {
         // iterate over the data until we find the one we want
         foreach ($this->data as $record)
             if ($record['id'] == $which)

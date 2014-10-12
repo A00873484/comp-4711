@@ -22,16 +22,21 @@ class Application extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->data = array();
-        
+        $this->data['title'] = 'Quotes CMS';    // our default title
         $this->errors = array();
+        $this->data['pageTitle'] = 'welcome';   // our default page
     }
 
     /**
      * Render this page
      */
     function render() {
+        $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-		$this->parser->parse('_template', $this->data);
+
+        // finally, build the browser page!
+        $this->data['data'] = &$this->data;
+        $this->parser->parse('_template', $this->data);
     }
 
 }
