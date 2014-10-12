@@ -55,7 +55,6 @@ $autoload['packages'] = array();
 //$autoload['libraries'] = array('parser', 'database');
 $autoload['libraries'] = array('database','parser','session');
 
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Helper Files
