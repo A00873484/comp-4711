@@ -9,6 +9,7 @@
         <th>Description</th>
         <th>Picture</th>
         <th>Edit</th>
+		<th>Better Edit</th>
     </tr>
     {themeat}
 </table>
