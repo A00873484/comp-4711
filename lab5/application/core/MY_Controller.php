@@ -34,12 +34,25 @@ class Application extends CI_Controller {
         $this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'),true);
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 
-		//$this­>data['errormessages'] = $this­>scold();
+        $this->data['errormessages'] = $this->scold();
+		// $this->data['errormessages'] = $this->scold();
         // finally, build the browser page!
         $this->data['data'] = &$this->data;
         $this->parser->parse('_template', $this->data);
     }
 
+    function scold() {
+        $result = '';
+        if(count($this->errors) < 1) {
+            $this->data['alerting'] = '';
+        } else {
+            $this->data['alerting'] = 'alert alert-error';
+            foreach($this->errors as $msg) {
+                $result .= $msg . '<br/>';
+            }
+        }
+        return $result;
+    }
 }
 
 /* End of file MY_Controller.php */
