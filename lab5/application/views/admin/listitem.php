@@ -10,6 +10,7 @@
         <th>Picture</th>
         <th>Edit</th>
 		<th>Better Edit</th>
+		<th>Fancy Edit</th>
     </tr>
     {themeat}
 </table>
