@@ -16,7 +16,8 @@ class Admin extends Application {
     function __construct() {
         parent::__construct();
     }
-
+	
+	//Displays all of the items without edit options.
     function display() {
         $this->data['title'] = 'Jim\'s Joint Administration!';
         $this->data['pagebody'] = 'admin/show_menu';
@@ -42,6 +43,7 @@ class Admin extends Application {
         $this->render();
     }
 
+	//Displays all of the items with edit options. 
     function list2() {
         $this->data['title'] = 'Jim\'s Joint Administration (view 2)!';
         $this->data['pagebody'] = 'admin/listitem';
@@ -61,6 +63,8 @@ class Admin extends Application {
         $this->render();
     }
 
+	//Takes in the values in the textboxs and determines if the data inside is valid or not,
+	//checks for empty textboxes for name and price and checks to see if price has a number in it.
 	function errors2($items){
 		$count = 0;
 		if(!$items['name']){
@@ -76,6 +80,7 @@ class Admin extends Application {
 		return $count == 0 ? false : true;
 	}
 	
+	//First edit function displays the textboxs used to edit the info along with the current information for the item.
     function edit3($code) {
         $this->data['title'] = 'Jim\'s Joint Maintenance!';
         $this->data['pagebody'] = 'admin/edititem';
@@ -103,7 +108,7 @@ class Admin extends Application {
         $this->render();
     }
 	
-	
+	//First post function updates the menu then redirects to the homepage.
     function post3() {
         // Handle edit form
 		$edited = $_POST;
@@ -116,6 +121,7 @@ class Admin extends Application {
 		redirect('/');
     }
 	
+	//Second edit function displays the textboxs and the items current information, if redirected too error messages are displayed along with submited data.  
 	function edit4($code) {
         $this->data['title'] = 'Jim\'s Joint Maintenance!';
 		$this->data['pagebody'] = 'admin/edititem';
@@ -166,6 +172,7 @@ class Admin extends Application {
         $this->render();
     }
 	
+	//Second post function checks for errors, if none it updates the menu then redirects to the homepage, if errors are found then it redirects to the edit form.
     function post4() {
         // Handle edit form
 		$edited = $_POST;
@@ -187,6 +194,7 @@ class Admin extends Application {
 		
     }
 	
+	//Third edit function displays the textboxs and the items current information useing function calls, if redirected too error messages are displayed along with submited data.  
 	function edit5($num) {
         $this->data['title'] = 'Jim\'s Joint Maintenance!';
 		$this->data['pagebody'] = 'admin/edit5';
@@ -222,6 +230,7 @@ class Admin extends Application {
         $this->render();
     }
 	
+	//Third post function checks for errors, if none it updates the menu then redirects to the homepage, if errors are found then it redirects to the edit form.
     function post5($num) {
         // Handle edit form
 		$edited = $_POST;
