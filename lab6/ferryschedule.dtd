@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	COMP 4711, Fall 2014, Lab 5
+	BC Ferries, Southern Gulf Islands Route
+
+	Created by: Jay Huang, Daniel Engelhard
+-->
+
+<!-- BC Ferries schedule -->
+<!ELEMENT schedule (route, effective-date)>
+
+<!-- Description of the route, for later reporting -->
+<!ELEMENT route (#PCDATA)>
+
+<!-- Effective date, for later reporting -->
+<!ELEMENT effective-date (#PCDATA)>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	COMP 4711, Fall 2014, Lab 5
+	BC Ferries, Southern Gulf Islands Route
+
+	Created by: Jay Huang, Daniel Engelhard
+-->
+
+<!DOCTYPE schedule SYSTEM 'ferryschedule.dtd'>
+
+<schedule>
+	<route>Southern Gulf Islands to Mainland</route>
+	<effective-date>September 2 - October 16, 2014</effective-date>
+</schedule>
