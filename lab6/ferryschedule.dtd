@@ -7,10 +7,20 @@
 -->
 
 <!-- BC Ferries schedule -->
-<!ELEMENT schedule (route, effective-date)>
+<!ELEMENT schedule (route, effective-date, ports, days)>
 
 <!-- Description of the route, for later reporting -->
 <!ELEMENT route (#PCDATA)>
 
 <!-- Effective date, for later reporting -->
 <!ELEMENT effective-date (#PCDATA)>
+
+<!-- A table of valid ports, to be looked up under program control -->
+<!ELEMENT ports (port)*>
+<!ELEMENT port (#PCDATA)>
+<!ATTLIST port code CDATA #REQUIRED>
+
+<!-- A table of valid day codes -->
+<!ELEMENT days (day)*>
+<!ELEMENT day (#PCDATA)>
+<!ATTLIST day code CDATA #REQUIRED>

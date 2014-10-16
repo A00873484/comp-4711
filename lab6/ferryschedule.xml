@@ -11,4 +11,24 @@
 <schedule>
 	<route>Southern Gulf Islands to Mainland</route>
 	<effective-date>September 2 - October 16, 2014</effective-date>
+
+	<!-- Define the ports on this route -->
+	<ports>
+		<port code="LH">Long Harbour (Salt Spring)</port>
+		<port code="SB">Sturdies Bay (Galiano)</port>
+		<port code="OB">Otter Bay (Pender)</port>
+		<port code="VB">Village Bay (Mayne)</port>
+		<port code="TS">Tsawwassen (Mainland)</port>
+	</ports>
+
+	<!-- Define the days of the week we want to use -->
+	<days>
+		<day code="M">Monday</day>
+		<day code="T">Tuesday</day>
+		<day code="W">Wednesday</day>
+		<day code="R">Thursday</day>
+		<day code="F">Friday</day>
+		<day code="S">Saturday</day>
+		<day code="U">Sunday</day>
+	</days>
 </schedule>
