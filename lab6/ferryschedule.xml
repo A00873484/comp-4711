@@ -44,4 +44,41 @@
 		<stop port="VB" arrive="0830" depart="0840" />
 		<stop port="SB" arrive="0915" depart="0925" />
 	</sailing>
+
+	<!-- Here are the morning westbound sailings -->
+	<sailing origin="TS" destination="LH" days="U" depart="1010" arrive="1310">
+		<stop port="OB" arrive="0755" depart="0805" />
+		<stop port="VB" arrive="0830" depart="0840" />
+		<stop port="SB" arrive="0915" depart="0925" />
+	</sailing>
+	<sailing origin="TS" destination="LH" days="U" depart="1110" arrive="1410">
+		<stop port="OB" arrive="0755" depart="0805" />
+		<stop port="VB" arrive="0830" depart="0840" />
+		<stop port="SB" arrive="0915" depart="0925" />
+	</sailing>
+
+	<!-- Here are the afternoon/evening westbound sailings -->
+	<!-- In accordance to #7 of the lab, added a stop at Fulford Harbour, assuming there is a 10 minute gap between arrival and departure, and it takes 20 mins from the previous destination to Fulford, then 20 mins from Fulford to the next destination. -->
+	<sailing origin="TS" destination="LH" days="MTWR" depart="1920" arrive="2230">
+		<stop port="SB" arrive="2015" depart="2025" />
+		<stop port="VB" arrive="2055" depart="2105" />
+		<stop port="OB" arrive="2130" depart="2140" />
+		<stop port="FH" arrive="2200" depart="2210" />
+	</sailing>
+	<sailing origin="TS" destination="LH" days="F" depart="1940" arrive="2230">
+		<stop port="SB" arrive="2025" depart="2045" />
+		<stop port="OB" arrive="2130" depart="2140" />
+		<stop port="FH" arrive="2200" depart="2210" />
+	</sailing>
+	<sailing origin="TS" destination="LH" days="S" depart="1215" arrive="1410">
+		<stop port="FH" arrive="1340" depart="1350" />
+	</sailing>
+	<sailing origin="TS" destination="LH" days="S" depart="2045" arrive="2300">
+		<stop port="SB" arrive="2140" depart="2150" />
+		<stop port="VB" arrive="2215" depart="2220" />
+		<stop port="FH" arrive="2240" depart="2250" />
+	</sailing>
+	<sailing origin="TS" destination="LH" days="U" depart="2135" arrive="2330">
+		<stop port="FH" arrive="2300" depart="2310" />
+	</sailing>
 </schedule>

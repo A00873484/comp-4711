@@ -32,8 +32,8 @@ A sailing may have any number of stops along the way.
 -->
 <!ELEMENT sailing (stop)*>
 <!ATTLIST sailing
-	origin (LH|OB|VB|SB|TS) "LH"
-	destination (LH|OB|VB|SB|TS) "LH"
+	origin (LH|OB|VB|SB|TS|FH) "LH"
+	destination (LH|OB|VB|SB|TS|FH) "LH"
 	depart 	CDATA #REQUIRED
 	arrive CDATA #REQUIRED
 	days CDATA #REQUIRED>
@@ -41,6 +41,6 @@ A sailing may have any number of stops along the way.
 <!-- A stop along the way between Salt Spring and Tsawwassen. -->
 <!ELEMENT stop (#PCDATA)>
 <!ATTLIST stop
-	port (LH|OB|VB|SB|TS) "LH"
+	port (LH|OB|VB|SB|TS|FH) "LH"
 	depart CDATA #REQUIRED
 	arrive CDATA #REQUIRED>
