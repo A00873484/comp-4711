@@ -19,6 +19,7 @@
 		<port code="OB">Otter Bay (Pender)</port>
 		<port code="VB">Village Bay (Mayne)</port>
 		<port code="TS">Tsawwassen (Mainland)</port>
+		<port code="FH">Fulford Harbor (Salt Spring)</port>
 	</ports>
 
 	<!-- Define the days of the week we want to use -->
@@ -44,6 +45,24 @@
 		<stop port="VB" arrive="0830" depart="0840" />
 		<stop port="SB" arrive="0915" depart="0925" />
 	</sailing>
+
+	<!-- Here are the afternoon/evening eastbound sailings -->
+	<sailing origin="LH" destination="TS" days="F" depart="1405" arrive="1525"></sailing>
+	<sailing origin="LH" destination="TS" days="MTWR" depart="1515" arrive="1835">
+		<stop port="OB" arrive="1555" depart="1605" />
+		<stop port="VB" arrive="1630" depart="1655" />
+		<stop port="SB" arrive="1725" depart="1735" />
+	</sailing>
+	<sailing origin="LH" destination="TS" days="U" depart="1530" arrive="1800">
+		<stop port="VB" arrive="1605" depart="1000" />
+		<stop port="SB" arrive="1025" depart="1705" />
+	</sailing>
+	<sailing origin="LH" destination="TS" days="S" depart="1535" arrive="1835">
+		<stop port="OB" arrive="1615" depart="1925" />
+		<stop port="VB" arrive="1950" depart="1000" />
+		<stop port="SB" arrive="1030" depart="1740" />
+	</sailing>
+	<sailing origin="LH" destination="TS" days="F" depart="1635" arrive="1735"></sailing>
 
 	<!-- Here are the morning westbound sailings -->
 	<sailing origin="TS" destination="LH" days="U" depart="1010" arrive="1310">
