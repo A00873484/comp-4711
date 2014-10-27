@@ -2,4 +2,9 @@
 body {}
 #content {width:100%; margin-left:5% auto;margin-right:5% auto;}
 #footer {font-size: small; font-style:italic;text-align:center;}
-#topstuff {background: url(/assets/images/logo.jpg) repeat-x; height:150px;}
+#topstuff {
+	background: url(/assets/images/logo.jpg);
+	height: 200px;
+	background-size: cover;
+	background-position: left 410px;
+}
