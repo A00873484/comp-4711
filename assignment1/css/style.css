@@ -115,6 +115,15 @@ select { padding: 0; }
 .mb47{ margin-bottom: 47px !important; } .mb48{ margin-bottom: 48px !important; } .mb49{ margin-bottom: 49px !important; }
 .mb50{ margin-bottom: 50px !important; }
 
+/*--- Override CI forms ---*/
+.edit-form form input, .edit-form form textarea, .edit-form form select{
+	width: 100% !important;
+}
+
+.edit-form > form {
+	width: 500px !important;
+	margin: 0 auto 100px !important;
+}
 /*--- color animation ---*/
 a, .portfolio-context{
 	transition: color 300ms, background-color 300ms, opacity 300ms;
@@ -232,6 +241,9 @@ div.color-open-section{ padding-top: 45px; margin-bottom: 45px; }
 
 /*--- page content ---*/
 div.gdl-page-item{ margin-top: 55px; }
+div.gdl-page-item table img { width: 100px; height: auto;}
+div.gdl-page-item table td, div.gdl-page-item th { text-align: center; vertical-align: middle; }
+div.gdl-page-item table tr:nth-child(even) { background-color: #EEE; }
 div.content-outer-wrapper{ position: relative; }
 
 /*--- top slider / layer slider ---*/
