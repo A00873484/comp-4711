@@ -43,19 +43,29 @@ class Home extends Application {
         foreach ($source as $record) {
         	htmlspecialchars($record->timeChanged, ENT_QUOTES, 'UTF-8');
         	if($record->timeChanged > $firstnum){
-        		$first = $record;
-        		if($firstnum>$secondnum)
+        		if($firstnum>$secondnum){
         			$second = $first;
-        		else if($firstnum>$thirdnum)
+        			$secondnum = $firstnum;
+        		}
+        		else if($firstnum>$thirdnum){
         			$third = $first;
+        			$thirdnum = $firstnum;
+        		}
+        		$first = $record;
+        		$firstnum = $record->timeChanged;
         	}
         	else if($record->timeChanged > $secondnum){
-        		$second = $record;
-        		if($seond>$third)
+        		if($second>$third){
         			$third = $second;
+        			$third = $second;
+        		}
+        		$second = $record;
+        		$secondnum = $record->timeChanged;
         	}
-        	else if($record->timeChanged > $thirdnum)
+        	else if($record->timeChanged > $thirdnum){
         		$third = $record;
+        		$thirdnum = $record->timeChanged;
+        	}
         }
 		htmlspecialchars($first->name, ENT_QUOTES, 'UTF-8');
         htmlspecialchars($first->image, ENT_QUOTES, 'UTF-8');

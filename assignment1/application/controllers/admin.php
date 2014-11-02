@@ -24,7 +24,6 @@ class Admin extends Application {
 		$this->data['header'] = 'header';
 		$this->data['footer'] = 'footer';
         $source = $this->attractions->all();
-        
 		$options = "";
         foreach ($source as $record) {
         	htmlspecialchars($record->id, ENT_QUOTES, 'UTF-8');
@@ -94,9 +93,14 @@ class Admin extends Application {
 		if($this->errors($item)){			
 			$this->edit($num);
 		}else{
+			htmlspecialchars($temp->name, ENT_QUOTES, 'UTF-8');
+			htmlspecialchars($temp->description, ENT_QUOTES, 'UTF-8');
+			htmlspecialchars($temp->category, ENT_QUOTES, 'UTF-8');
+			htmlspecialchars($temp->timeChanged, ENT_QUOTES, 'UTF-8');
 			$temp->name = $edited['name'];
 			$temp->description = $edited['description'];
 			$temp->category = $edited['category'];
+			$temp->timeChanged = date("YmdHi");
 			$this->attractions->update($temp);
 			redirect('/admin');
 		}
