@@ -30,7 +30,7 @@
 											<div class="title-item-wrapper">
 												<div class="title-item-gimmick left" style="width: 356px;"></div>
 												<h2 class="title-item-header">
-													<span>About</span>
+													<span>Admin</span>
 												</h2>
 												<div class="title-item-gimmick right" style="width: 356px;"></div>
 											</div>
@@ -39,33 +39,19 @@
 									</div>
 								</div>
 								<div class="container">
-									<div class="row">
-										<div class="twelve columns package-item-class package-item-class-1">
-											<div class="package-item-holder">
-												<div class="row">
-													<div class="twelve columns gdl-package-grid2">
-														<div class="package-content-wrapper">
-															<div class="package-thumbnail-outer-wrapper">
-																<div class="package-media-wrapper gdl-image">
-																	<img src="/img/{image}" alt="">
-																</div>
-																<div class="package-title-wrapper">
-																	<div class="package-title-overlay"></div>
-																	<h2 class="package-title">
-																		<a>{name}<br><br>{description}</a>
-																	</h2>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="clear"></div>
-												</div>
-											</div>
-											<div class="clear"></div>
-										</div>
-										<div class="clear"></div>
-									</div>
+									<table class="table">
+										<tr>
+											<th>ID</th>
+											<th>Name</th>
+											<th>Category</th>
+											<th>Picture</th>
+											<th>Edit</th>
+										</tr>
+										{fill}
+									</table>
 								</div>
+							</div>
+						</div>
 						<!-- page wrapper -->
 					</div>
 					<!-- post class -->

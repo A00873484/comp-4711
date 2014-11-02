@@ -95,7 +95,7 @@ ul.portfolio-item-filter li a{ color: #111111; }
 div.portfolio-filter-wrapper div.port-current-bar{ border-color: #3389d7; } 
 div.single-portfolio .port-info{ color: #7a7a7a; } 
 div.single-portfolio .port-info .head{ color: #404040; } 
-div.portfolio-carousel-wrapper .port-nav, div.portfolio-carousel-description .port-nav, div.single-portfolio .port-nav a, div.blog-carousel-wrapper .blog-nav{ background-color: #f6f6f6; } 
+div.portfolio-carousel-wrapper .port-nav, div.portfolio-carousel-description .port-nav div.blog-carousel-wrapper .blog-nav{ background-color: #f6f6f6; } 
 .package-title a{ color: #3389d7; } 
 div.package-info .package-price{ color: #3389d7; } 
 div.package-info .discount-text, div.package-info .discount-price, div.package-info .separator{ color: #e9513c; } 

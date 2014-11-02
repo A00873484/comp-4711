@@ -1,7 +1,5 @@
 <?php
 
-include 'C:\xampp\htdocs\comp-4711\lab5\application\helpers\formfields_helper.php';
-
 /**
  * Admin handler
  * 
@@ -196,6 +194,7 @@ class Admin extends Application {
 	
 	//Third edit function displays the textboxs and the items current information useing function calls, if redirected too error messages are displayed along with submited data.  
 	function edit5($num) {
+		$this->load->helper('form_helper');
         $this->data['title'] = 'Jim\'s Joint Maintenance!';
 		$this->data['pagebody'] = 'admin/edit5';
 		$item = $this->session->userdata('item');

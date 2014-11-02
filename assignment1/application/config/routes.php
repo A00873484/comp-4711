@@ -1,13 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $route['default_controller'] = "home"; 
-$route['explore'] = "explore";
+$route['explore'] = "home/explore";
+$route['admin'] = "admin";
 $route['home'] = "home";
 $route['about'] = "about";
-$route['explore/eat/(:num)'] = "explore/eat/$1";
-$route['explore/sleep/(:num)'] = "explore/sleep/$1";
-$route['explore/play/(:num)'] = "explore/play/$1";
-
 $route['404_override'] = '';
 
 

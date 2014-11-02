@@ -587,7 +587,8 @@ div.gdl-package-grid2 .package-title-wrapper{ position: absolute; bottom: 10px; 
 div.gdl-package-grid2 .package-title-overlay{ background: #000; opacity: 0.8; filter: alpha(opacity=80);
 	position: absolute; bottom: 0px; left: 0px; right: 0px; top: 0px; }
 div.gdl-package-grid2 .package-title{ font-size: 18px; margin-top: -1px; margin-bottom: 0px; 
-	float: left; position: relative; line-height: 20px;  }
+	float: left; position: relative; line-height: 20px; }
+div.gdl-package-grid2 .package-title.full-width {overflow-y: auto; max-height: 300px; min-height: 100px; width: 100%;}
 div.gdl-package-grid2 .package-title a{ color: #fff; }
 div.gdl-package-grid2 .package-info{ font-size: 14px; line-height: 20px; font-weight: bold; float: right; position: relative; }
 div.gdl-package-grid2 .package-info i{ margin-right: 10px; margin-top: 3px; color: #fff; }	
