@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `attractions`
 --
-
+DROP TABLE IF EXISTS `attractions`;
 CREATE TABLE IF NOT EXISTS `attractions` (
   `id` int(11) NOT NULL,
   `name` text NOT NULL,
@@ -54,7 +54,7 @@ INSERT INTO `attractions` (`id`, `name`, `image`, `image2`, `image3`, `where`, `
 --
 -- Table structure for table `ci_sessions`
 --
-
+DROP TABLE IF EXISTS `ci_sessions`;
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(16) NOT NULL DEFAULT '0',
@@ -149,7 +149,7 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 --
 -- Table structure for table `contacts`
 --
-
+DROP TABLE IF EXISTS `contacts`;
 CREATE TABLE IF NOT EXISTS `contacts` (
   `id` varchar(3) NOT NULL,
   `surname` varchar(80) DEFAULT NULL,
@@ -172,7 +172,7 @@ INSERT INTO `contacts` (`id`, `surname`, `firstname`, `phone`, `email`) VALUES
 --
 -- Table structure for table `menu`
 --
-
+DROP TABLE IF EXISTS `menu`;
 CREATE TABLE IF NOT EXISTS `menu` (
   `code` int(11) NOT NULL,
   `name` varchar(32) NOT NULL,
@@ -201,7 +201,7 @@ INSERT INTO `menu` (`code`, `name`, `description`, `price`, `picture`, `category
 --
 -- Table structure for table `orderitems`
 --
-
+DROP TABLE IF EXISTS `orderitems`;
 CREATE TABLE IF NOT EXISTS `orderitems` (
   `order` int(11) NOT NULL,
   `item` int(11) NOT NULL,
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS `orderitems` (
 --
 -- Table structure for table `orders`
 --
-
+DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
   `num` int(11) NOT NULL,
   `date` datetime NOT NULL,
