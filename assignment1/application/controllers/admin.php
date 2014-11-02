@@ -52,7 +52,9 @@ class Admin extends Application {
 			$options[1] = 'eat';
 			$options[2] = 'sleep';
 			$this->data['category'] = makeComboField('Category', 'category', $attraction['category'], $options, $explain = "Categorys are Sweet, Meat, and Drink. Select Accordingly", $maxlen = 40, $size = 25, $disabled = false);
-			$this->data['image'] = showImage('Image', $attraction['image'], $width = 120, $height = 80);
+			$this->data['image'] = showImage('Image1', $attraction['image'], $width = 120, $height = 80);
+			$this->data['image2'] = showImage('Image2', $attraction['image2'], $width = 120, $height = 80);
+			$this->data['image3'] = showImage('Image3', $attraction['image3'], $width = 120, $height = 80);
 			$this->data['submit'] = makeSubmitButton('Submit', 'submit');
 		}else{
 			$temp = $this->attractions->get($num);
@@ -85,8 +87,26 @@ class Admin extends Application {
 		$edited = $_POST;
 		$temp = $this->attractions->get($num);
 		$edited['code'] = $num;
-		htmlspecialchars($temp->image, ENT_QUOTES, 'UTF-8');
-		$edited['picture'] = $temp->image;
+
+		if (!empty($edited['Image1'])) {
+	        $config['upload_path'] = ''.$_SERVER['DOCUMENT_ROOT'].'/img/';
+	        $config['allowed_types'] = 'gif|jpg|png';
+	        $config['max_size'] = '5000';
+	        $config['max_width']  = '2000';
+	        $config['max_height']  = '2000';
+	        $config['encrypt_name'] = TRUE;
+	        $config['remove_spaces'] = TRUE;
+
+	        $this->load->library('upload', $config);
+	        print_r($this->upload->do_upload('Image1'));
+	        if ($this->upload->do_upload('Image1')) {
+
+	            $data = array('upload_data' => $this->upload->data());
+	            $data = $this->upload->data();
+	        }
+
+	    }
+
 		$this->session->unset_userdata('item');
 		$this->session->set_userdata('item', $edited);
 		$item = $this->session->userdata('item');
@@ -97,6 +117,10 @@ class Admin extends Application {
 			htmlspecialchars($temp->description, ENT_QUOTES, 'UTF-8');
 			htmlspecialchars($temp->category, ENT_QUOTES, 'UTF-8');
 			htmlspecialchars($temp->timeChanged, ENT_QUOTES, 'UTF-8');
+			htmlspecialchars($temp->image, ENT_QUOTES, 'UTF-8');
+			htmlspecialchars($temp->image2, ENT_QUOTES, 'UTF-8');
+			htmlspecialchars($temp->image3, ENT_QUOTES, 'UTF-8');
+			
 			$temp->name = $edited['name'];
 			$temp->description = $edited['description'];
 			$temp->category = $edited['category'];
