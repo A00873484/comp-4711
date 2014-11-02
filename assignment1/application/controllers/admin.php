@@ -62,16 +62,19 @@ class Admin extends Application {
 			htmlspecialchars($temp->description, ENT_QUOTES, 'UTF-8');
 			htmlspecialchars($temp->category, ENT_QUOTES, 'UTF-8');
 			htmlspecialchars($temp->image, ENT_QUOTES, 'UTF-8');
+			htmlspecialchars($temp->image2, ENT_QUOTES, 'UTF-8');
+			htmlspecialchars($temp->image2, ENT_QUOTES, 'UTF-8');
 			$this->data['id'] = makeTextField('Id', 'id', $temp->id, $explain = "The Attraction ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = true);	
 			$this->data['name'] = makeTextField('Name', 'name', $temp->name, 'Short name for this attraction, suited to customer ordering');
 			$this->data['description'] = makeTextArea('Description', 'description', $temp->description, "The description of the attraction, anything is valid");			
 			
-			$options[0] = 'play';
-			$options[1] = 'eat';
-			$options[2] = 'sleep';
-			$this->data['category'] = makeComboField('Category', 'category', $temp->category, $options, $explain = "Categorys are Sweet, Meat, and Drink. Select Accordingly", $maxlen = 40, $size = 25, $disabled = false);
-			$this->data['image'] = showImage('Image', $temp->image, $width = 120, $height = 80);
-			
+			$options['play'] = 'play';
+			$options['eat'] = 'eat';
+			$options['sleep'] = 'sleep';
+			$this->data['category'] = makeComboField('Category', 'category', $temp->category, $options, $explain = "Categorys are Play, Eat, and Sleep. Select Accordingly", $maxlen = 40, $size = 25, $disabled = false);
+			$this->data['image'] = showImage('Image1', $temp->image, $width = 120, $height = 80);
+			$this->data['image2'] = showImage('Image2', $temp->image2, $width = 120, $height = 80);
+			$this->data['image3'] = showImage('Image3', $temp->image3, $width = 120, $height = 80);
 			$this->data['submit'] = makeSubmitButton('Submit', 'submit');
 		}
 		$this->data['num'] = $num;
@@ -83,21 +86,32 @@ class Admin extends Application {
 		$edited = $_POST;
 		$temp = $this->attractions->get($num);
 		$edited['code'] = $num;
-		$edited['picture'] = $temp->picture;
+		htmlspecialchars($temp->image, ENT_QUOTES, 'UTF-8');
+		$edited['picture'] = $temp->image;
 		$this->session->unset_userdata('item');
 		$this->session->set_userdata('item', $edited);
 		$item = $this->session->userdata('item');
-		if($this->errors2($item)){			
+		if($this->errors($item)){			
 			$this->edit($num);
 		}else{
 			$temp->name = $edited['name'];
 			$temp->description = $edited['description'];
-			$temp->price = $edited['price'];
 			$temp->category = $edited['category'];
-			$this->menu->update($temp);
+			$this->attractions->update($temp);
 			redirect('/admin');
 		}
     }
+
+    //Takes in the values in the textboxs and determines if the data inside is valid or not,
+	//checks for empty textboxes for name and price and checks to see if price has a number in it.
+	function errors($items){
+		$count = 0;
+		if(!$items['name']){
+			$this->errors['name'] = 'Your Name textbox is empty';
+			$count = 1;
+		}
+		return $count == 0 ? false : true;
+	}
 
 }
 
