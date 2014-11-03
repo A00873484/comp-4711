@@ -70,13 +70,13 @@
 			<div class="ls-webkit-hack"></div>
 			<div class="ls-inner" style="width: 1903px; height: 560px;">
 				<div class="ls-layer" style="left: auto; right: 0px; top: 0px; bottom: auto; width: 1903px; height: 560px; display: none; visibility: visible;">
-					<img src="/img/{firstimage}" class="ls-bg" style="padding: 0px; border-width: 0px; width: 1903px; height: 860px; margin-left: -951.5px; margin-top: -430px;">
+					<img src="/assets/img/{firstimage}" class="ls-bg" style="padding: 0px; border-width: 0px; width: 1903px; height: 860px; margin-left: -951.5px; margin-top: -430px;">
 				</div>
 				<div class="ls-layer" style="width: 1903px; height: 560px;">
-					<img src="/img/{secondimage}" class="ls-bg">
+					<img src="/assets/img/{secondimage}" class="ls-bg">
 				</div>
 				<div class="ls-layer" style="display: none; visibility: visible; width: 1903px; height: 560px; left: 0px; right: auto; top: 0px; bottom: auto;">
-					<img src="/img/{thirdimage}" class="ls-bg" style="padding: 0px; border-width: 0px; width: 1903px; height: 860px; margin-left: -951.5px; margin-top: -430px;">
+					<img src="/assets/img/{thirdimage}" class="ls-bg" style="padding: 0px; border-width: 0px; width: 1903px; height: 860px; margin-left: -951.5px; margin-top: -430px;">
 				</div>
 				<div class="ls-circle-timer">
 					<div class="ls-ct-left">

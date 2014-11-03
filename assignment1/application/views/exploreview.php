@@ -39,7 +39,7 @@
 												<div class="package-thumbnail-outer-wrapper">
 													<div class="package-media-wrapper gdl-image">
 														<a href="/play">
-															<img src="/img/Culture.jpg" alt="">
+															<img src="/assets/img/Culture.jpg" alt="">
 														</a>
 													</div>
 													<div class="package-title-wrapper">
@@ -56,7 +56,7 @@
 												<div class="package-thumbnail-outer-wrapper">
 													<div class="package-media-wrapper gdl-image">
 														<a href="/eat">
-															<img src="/img/Sushi1.jpg" alt="">
+															<img src="/assets/img/Sushi1.jpg" alt="">
 														</a>
 													</div>
 													<div class="package-title-wrapper">
@@ -73,7 +73,7 @@
 												<div class="package-thumbnail-outer-wrapper">
 													<div class="package-media-wrapper gdl-image">
 														<a href="/sleep">
-															<img src="/img/NightBridge1.jpg" alt="">
+															<img src="/assets/img/NightBridge1.jpg" alt="">
 														</a>
 													</div>
 													<div class="package-title-wrapper">

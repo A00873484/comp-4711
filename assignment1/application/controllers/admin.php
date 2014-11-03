@@ -87,7 +87,7 @@ class Admin extends Application {
 		$temp = $this->attractions->get($num);
 		$edited['code'] = $num;
 		if (!empty($_FILES)) {
-			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/img/';
+			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/assets/img/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size'] = '5000';
 			$config['max_width']  = '2000';
@@ -211,7 +211,7 @@ class Admin extends Application {
 		$edited = $_POST;
 		$temp = array();
 		if (!empty($_FILES)) {
-			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/img/';
+			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/assets/img/';
 			$config['allowed_types'] = 'gif|jpg|png';
 			$config['max_size'] = '5000';
 			$config['max_width']  = '2000';

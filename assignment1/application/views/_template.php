@@ -11,30 +11,29 @@
 	================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" href="/css/style.css" type="text/css" media="all">
-	<!-- <link rel="stylesheet" href="/css/foundation.css" type="text/css"> -->
-	<link rel="stylesheet" href="/css/foundation-responsive.css" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/style-custom.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/foundation-responsive.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/style-custom.css" type="text/css" media="all">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Sans%3A100%2C300%2Cn%2Ci%2Cb%2Cbi&subset=latin" type="text/css" media="all">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Droid+Serif%3A100%2C300%2Cn%2Ci%2Cb%2Cbi&subset=latin" type="text/css" media="all">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans%3A100%2C300%2Cn%2Ci%2Cb%2Cbi&subset=latin" type="text/css" media="all">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto+Condensed%3A100%2C300%2Cn%2Ci%2Cb%2Cbi&subset=latin" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/layerslider.css" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/superfish.css" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/fancybox.css" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/jquery.fancybox-thumbs.css" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/font-awesome.css" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/jquery-ui-1.8.16.custom.css" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="all">
-	<link rel="stylesheet" href="/css/pgwslider.css" type="text/css">
-	<link rel="stylesheet" href="/css/skin.css" type="text/css">
-	<script type="text/javascript" src="/js/jquery.js"></script>
-	<script type="text/javascript" defer src="/js/jquery-migrate.min.js"></script>
-	<script type="text/javascript" defer src="/js/jquery.gmap.min.js"></script>
-	<script type="text/javascript" defer src="/js/layerslider.kreaturamedia.jquery.js"></script>
-	<script type="text/javascript" defer src="/js/jquery-easing-1.3.js"></script>
-	<script type="text/javascript" defer src="/js/jquerytransit.js"></script>
-	<script type="text/javascript" defer src="/js/layerslider.transitions.js"></script>
+	<link rel="stylesheet" href="/assets/css/layerslider.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/superfish.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/fancybox.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/jquery.fancybox-thumbs.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/font-awesome.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/jquery-ui-1.8.16.custom.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/flexslider.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/assets/css/pgwslider.css" type="text/css">
+	<link rel="stylesheet" href="/assets/css/skin.css" type="text/css">
+	<script type="text/javascript" src="/assets/js/jquery.js"></script>
+	<script type="text/javascript" defer src="/assets/js/jquery-migrate.min.js"></script>
+	<script type="text/javascript" defer src="/assets/js/jquery.gmap.min.js"></script>
+	<script type="text/javascript" defer src="/assets/js/layerslider.kreaturamedia.jquery.js"></script>
+	<script type="text/javascript" defer src="/assets/js/jquery-easing-1.3.js"></script>
+	<script type="text/javascript" defer src="/assets/js/jquerytransit.js"></script>
+	<script type="text/javascript" defer src="/assets/js/layerslider.transitions.js"></script>
 </head>
 <body class="home page page-template-default">
 	<div class="body-outer-wrapper ">
@@ -50,6 +49,7 @@
 			</div>
 			{footer}
 		</div>
+	</div>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     	var ATTR = {"enable":"enable","width":"80","height":"45"};
@@ -61,19 +61,19 @@
     			dropdowns[i].onchange = function(){ if ( this.value != '' ) window.location.href = this.value; }
     	});
     </script>
-    <script type="text/javascript" defer src="/js/superfish.js"></script>
-    <script type="text/javascript" defer src="/js/supersub.js"></script>
-    <script type="text/javascript" defer src="/js/hoverIntent.js"></script>
-    <script type="text/javascript" defer src="/js/jquery.easing.js"></script>
-    <script type="text/javascript" defer src="/js/jquery.fancybox.js"></script>
-    <script type="text/javascript" defer src="/js/jquery.fancybox-media.js"></script>
-    <script type="text/javascript" defer src="/js/jquery.fancybox-thumbs.js"></script>
-    <script type="text/javascript" defer src="/js/gdl-scripts.js"></script>
-    <script type="text/javascript" defer src="/js/jquery.ui.core.min.js"></script>
-    <script type="text/javascript" defer src="/js/jquery.cycle.js"></script>
-    <script type="text/javascript" defer src="/js/blog-carousel.js"></script>
-    <script type="text/javascript" defer src="/js/jquery.flexslider.js"></script>
-    <script type="text/javascript" defer src="/js/pgwslider.js"></script>
-    <script type="text/javascript" defer src="/js/main.js"></script>
+    <script type="text/javascript" defer src="/assets/js/superfish.js"></script>
+    <script type="text/javascript" defer src="/assets/js/supersub.js"></script>
+    <script type="text/javascript" defer src="/assets/js/hoverIntent.js"></script>
+    <script type="text/javascript" defer src="/assets/js/jquery.easing.js"></script>
+    <script type="text/javascript" defer src="/assets/js/jquery.fancybox.js"></script>
+    <script type="text/javascript" defer src="/assets/js/jquery.fancybox-media.js"></script>
+    <script type="text/javascript" defer src="/assets/js/jquery.fancybox-thumbs.js"></script>
+    <script type="text/javascript" defer src="/assets/js/gdl-scripts.js"></script>
+    <script type="text/javascript" defer src="/assets/js/jquery.ui.core.min.js"></script>
+    <script type="text/javascript" defer src="/assets/js/jquery.cycle.js"></script>
+    <script type="text/javascript" defer src="/assets/js/blog-carousel.js"></script>
+    <script type="text/javascript" defer src="/assets/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" defer src="/assets/js/pgwslider.js"></script>
+    <script type="text/javascript" defer src="/assets/js/main.js"></script>
 </body>
 </html>

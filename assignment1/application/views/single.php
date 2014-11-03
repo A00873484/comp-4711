@@ -42,9 +42,9 @@
 									<div class="row">
 										<div class="twelve columns">
 											<ul class="pgwSlider">
-												<li><img src="/img/{firstimage}"></li>
-												<li><img src="/img/{secondimage}"></li>
-												<li><img src="/img/{thirdimage}"></li>
+												<li><img src="/assets/img/{firstimage}"></li>
+												<li><img src="/assets/img/{secondimage}"></li>
+												<li><img src="/assets/img/{thirdimage}"></li>
 											</ul>
 											<div class="clear"></div>
 											<div class="attraction-descript">{description}</div>

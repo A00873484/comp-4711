@@ -35,7 +35,7 @@
 											<div class="package-content-wrapper">
 												<div class="package-thumbnail-outer-wrapper">
 													<div class="package-media-wrapper gdl-image">
-														<img src="/img/{image}" alt="">
+														<img src="/assets/img/{image}" alt="">
 													</div>
 													<div class="package-title-wrapper">
 														<div class="package-title-overlay"></div>
