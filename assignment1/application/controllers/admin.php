@@ -133,6 +133,7 @@ class Admin extends Application {
 			$temp->description = $edited['description'];
 			$temp->category = $edited['category'];
 			$temp->timeChanged = date("YmdHi");
+			$temp->where = "/select/select/".$num;
 			$this->attractions->update($temp);
 			redirect('/admin');
 		}
@@ -250,6 +251,7 @@ class Admin extends Application {
 			$temp['description'] = $edited['description'];
 			$temp['category'] = $edited['category'];
 			$temp['timeChanged'] = date("YmdHi");
+			$temp['where'] = "/select/select/".$edited['id'];
 			$this->attractions->add($temp);
 			redirect('/admin');
 		}
