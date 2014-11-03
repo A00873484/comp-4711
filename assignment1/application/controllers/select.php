@@ -20,7 +20,7 @@ class Select extends Application {
 
     function index($num) {
         $this->data['pagebody'] = 'single';
-		$this->data['fillhead']  = 'topSlider';
+		$this->data['fillhead']  = 'topFiller';
 		$this->data['header'] = 'header';
 		$this->data['footer'] = 'footer';
         $source = $this->attractions->get($num);
