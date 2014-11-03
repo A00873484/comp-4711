@@ -46,7 +46,7 @@ class Admin extends Application {
 		if($attraction){	
 			$this->data['id'] = makeTextField('Id', 'id', $num, $explain = "The Attraction ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = true);
 			$this->data['name'] = makeTextField('Name', 'name', $attraction['name'], 'Short name for this Attraction, suited to customer ordering');
-			$this->data['description'] = makeTextArea('Description', 'description', $attraction['description'], "The description of the attraction, anything is valid");
+			$this->data['description'] = makeTextArea('Description', 'description', $attraction['description'], "The description of the attraction, anything is valid", 1000);
 			
 			$options[0] = 'play';
 			$options[1] = 'eat';
@@ -67,7 +67,7 @@ class Admin extends Application {
 			htmlspecialchars($temp->image2, ENT_QUOTES, 'UTF-8');
 			$this->data['id'] = makeTextField('Id', 'id', $temp->id, $explain = "The Attraction ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = true);	
 			$this->data['name'] = makeTextField('Name', 'name', $temp->name, 'Short name for this attraction, suited to customer ordering');
-			$this->data['description'] = makeTextArea('Description', 'description', $temp->description, "The description of the attraction, anything is valid");			
+			$this->data['description'] = makeTextArea('Description', 'description', $temp->description, "The description of the attraction, anything is valid", 1000);			
 			
 			$options['play'] = 'play';
 			$options['eat'] = 'eat';
@@ -180,7 +180,7 @@ class Admin extends Application {
 		if($attraction){	
 			$this->data['id'] = makeTextField('Id', 'id', $attraction['id'], $explain = "The Attraction ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = false);
 			$this->data['name'] = makeTextField('Name', 'name', $attraction['name'], 'Short name for this Attraction, suited to customer ordering');
-			$this->data['description'] = makeTextArea('Description', 'description', $attraction['description'], "The description of the attraction, anything is valid");
+			$this->data['description'] = makeTextArea('Description', 'description', $attraction['description'], "The description of the attraction, anything is valid", 1000);
 			
 			$options[0] = 'play';
 			$options[1] = 'eat';
@@ -193,7 +193,7 @@ class Admin extends Application {
 		}else{
 			$this->data['id'] = makeTextField('Id', 'id', NULL, $explain = "The Attraction ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = false);	
 			$this->data['name'] = makeTextField('Name', 'name', NULL, 'Short name for this attraction, suited to customer ordering');
-			$this->data['description'] = makeTextArea('Description', 'description', NULL, "The description of the attraction, anything is valid");			
+			$this->data['description'] = makeTextArea('Description', 'description', NULL, "The description of the attraction, anything is valid", 1000);			
 			
 			$options['play'] = 'play';
 			$options['eat'] = 'eat';
