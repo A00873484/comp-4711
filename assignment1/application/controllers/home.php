@@ -25,9 +25,9 @@ class Home extends Application {
 		$this->data['footer'] = 'footer';
         // build the list of activities, to display on the homepage
         $source = $this->attractions->all();
-        $this->data['image'] = "MountainSmoke.jpg";
-        $this->data['image2'] = "OldBuilding.jpg";
-        $this->data['image3'] = "SeaShore.jpg";
+        $this->data['firstimage'] = "MountainSmoke.jpg";
+        $this->data['secondimage'] = "OldBuilding.jpg";
+        $this->data['thirdimage'] = "SeaShore.jpg";
         $this->data['page1.1'] = "Japan";
         $this->data['page1.2'] = "Land of the rising sun";
         $this->data['page2.1'] = "A mix of ancient and modern";
