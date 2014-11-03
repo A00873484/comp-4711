@@ -24,15 +24,14 @@ class Sleep extends Application {
 		$this->data['header'] = 'header';
 		$this->data['footer'] = 'footer';
         // build the list of options, to pass on to our view
-        $source = $this->attractions->all();
+        $source = $this->attractions->some('category', 'sleep');
         $options = "";
         foreach ($source as $record) {
-                htmlspecialchars($record->name, ENT_QUOTES, 'UTF-8');
-                htmlspecialchars($record->image, ENT_QUOTES, 'UTF-8');
-                htmlspecialchars($record->where, ENT_QUOTES, 'UTF-8');
-                htmlspecialchars($record->category, ENT_QUOTES, 'UTF-8');
-                if($record->category == "sleep")
-                    $options .= $this->parser->parse('sleep2', $record, true);
+            htmlspecialchars($record->name, ENT_QUOTES, 'UTF-8');
+            htmlspecialchars($record->image, ENT_QUOTES, 'UTF-8');
+            htmlspecialchars($record->where, ENT_QUOTES, 'UTF-8');
+            htmlspecialchars($record->category, ENT_QUOTES, 'UTF-8');
+            $options .= $this->parser->parse('attraction', $record, true);
         }
         $this->data['fill'] = $options;
         $this->render();

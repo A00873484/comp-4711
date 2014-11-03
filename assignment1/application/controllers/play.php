@@ -20,22 +20,19 @@ class Play extends Application {
 
     function index() {
         $this->data['pagebody'] = 'play';    // this is the view we want shown
-		$this->data['fillhead']  = 'topFiller';
+		$this->data['fillhead'] = 'topFiller';
 		$this->data['header'] = 'header';
 		$this->data['footer'] = 'footer';
         // build the list of options, to pass on to our view
-        $source = $this->attractions->all();
+        $source = $this->attractions->some('category', 'play');
         $options = "";
         
         foreach ($source as $record) {
-            //print_r($record->category + "");
             htmlspecialchars($record->name, ENT_QUOTES, 'UTF-8');
             htmlspecialchars($record->image, ENT_QUOTES, 'UTF-8');
             htmlspecialchars($record->where, ENT_QUOTES, 'UTF-8');
             htmlspecialchars($record->category, ENT_QUOTES, 'UTF-8');
-			if($record->category == 'play'){
-				$options .= $this->parser->parse('play2', $record, true);
-            }
+			$options .= $this->parser->parse('attraction', $record, true);
         }
         $this->data['fill'] = $options;
         $this->render();

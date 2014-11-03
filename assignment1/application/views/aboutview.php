@@ -52,7 +52,7 @@
 																<div class="package-title-wrapper">
 																	<div class="package-title-overlay"></div>
 																	<h2 class="package-title">
-																		<a>{name}<br><br>{description}</a>
+																		<a>{description}</a>
 																	</h2>
 																</div>
 															</div>
