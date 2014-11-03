@@ -39,12 +39,15 @@
 <body class="home page page-template-default">
 	<div class="body-outer-wrapper ">
 		<div class="body-wrapper">
-			{header}
-			{fillhead}
-			<div class="{alerting}">
-                {errormessages}
-            </div>			
-            {content}
+			<div class="wrapper">
+				{header}
+				{fillhead}
+				<div class="{alerting}">
+	                {errormessages}
+	            </div>			
+	            {content}
+	            <div class="push"></div>
+			</div>
 			{footer}
 		</div>
     <script src="/assets/js/bootstrap.min.js"></script>

@@ -4,7 +4,7 @@
  */
 ?>
 
-<div class="footer-wrapper boxed-style">
+<div class="footer-wrapper boxed-style footer">
 	<!-- Get Footer Widget -->
 	<div class="container footer-container">
 		<div class="footer-widget-wrapper">

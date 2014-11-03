@@ -130,10 +130,23 @@ select { padding: 0; }
 	padding: 20px 10px;
 	margin: 10px 0;
 	background-color: #EEE;
-	/*min-height: 200px;*/
 	font-size: 1.2em;
 	color: black;
 }
+
+html, body {
+	height: 100%;
+}
+.wrapper {
+	min-height: 100%;
+	margin: 0 auto -80px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+	height: 80px; /* '.push' must be the same height as 'footer' */
+}
+
+
+
 /*--- color animation ---*/
 a, .portfolio-context{
 	transition: color 300ms, background-color 300ms, opacity 300ms;
