@@ -46,9 +46,11 @@
 											<th>Category</th>
 											<th>Picture</th>
 											<th>Edit</th>
+											<th>Delete</th>
 										</tr>
 										{fill}
 									</table>
+									<a href="/admin/add">Add</a>
 								</div>
 							</div>
 						</div>

@@ -164,6 +164,97 @@ class Admin extends Application {
 		return $count == 0 ? false : true;
 	}
 
+	function delete($num){
+		$this->attractions->delete($num);
+		redirect('/admin');
+	}
+
+	function add(){
+		$this->load->helper('formfields');
+        $this->data['pagebody'] = 'add';
+		$this->data['fillhead']  = 'topFiller';
+		$this->data['header'] = 'header';
+		$this->data['footer'] = 'footer';
+		$attraction = $this->session->userdata('attraction');
+		if($attraction){	
+			$this->data['id'] = makeTextField('Id', 'id', $attraction['id'], $explain = "The Attraction ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = false);
+			$this->data['name'] = makeTextField('Name', 'name', $attraction['name'], 'Short name for this Attraction, suited to customer ordering');
+			$this->data['description'] = makeTextArea('Description', 'description', $attraction['description'], "The description of the attraction, anything is valid");
+			
+			$options[0] = 'play';
+			$options[1] = 'eat';
+			$options[2] = 'sleep';
+			$this->data['category'] = makeComboField('Category', 'category', $attraction['category'], $options, $explain = "Categorys are Sweet, Meat, and Drink. Select Accordingly", $maxlen = 40, $size = 25, $disabled = false);
+			$this->data['image'] = showImage('Image1', $attraction['image'], $width = 120, $height = 80);
+			$this->data['image2'] = showImage('Image2', $attraction['image2'], $width = 120, $height = 80);
+			$this->data['image3'] = showImage('Image3', $attraction['image3'], $width = 120, $height = 80);
+			$this->data['submit'] = makeSubmitButton('Submit', 'submit');
+		}else{
+			$this->data['id'] = makeTextField('Id', 'id', NULL, $explain = "The Attraction ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = false);	
+			$this->data['name'] = makeTextField('Name', 'name', NULL, 'Short name for this attraction, suited to customer ordering');
+			$this->data['description'] = makeTextArea('Description', 'description', NULL, "The description of the attraction, anything is valid");			
+			
+			$options['play'] = 'play';
+			$options['eat'] = 'eat';
+			$options['sleep'] = 'sleep';
+			$this->data['category'] = makeComboField('Category', 'category', NULL, $options, $explain = "Categorys are Play, Eat, and Sleep. Select Accordingly", $maxlen = 40, $size = 25, $disabled = false);
+			$this->data['image'] = showImage('Image1', NULL, $width = 120, $height = 80);
+			$this->data['image2'] = showImage('Image2', NULL, $width = 120, $height = 80);
+			$this->data['image3'] = showImage('Image3', NULL, $width = 120, $height = 80);
+			$this->data['submit'] = makeSubmitButton('Submit', 'submit');
+		}
+        $this->render();
+	}
+
+	function post2() {
+		$edited = $_POST;
+		$temp = array();
+		if (!empty($_FILES)) {
+			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/img/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size'] = '5000';
+			$config['max_width']  = '2000';
+			$config['max_height']  = '2000';
+			$config['encrypt_name'] = TRUE;
+			$config['remove_spaces'] = TRUE;
+		    $this->load->library('upload', $config);
+		    $edited['image'] = $_FILES['Image1']['name'];
+		    $edited['image2'] = $_FILES['Image2']['name'];
+		    $edited['image3'] = $_FILES['Image3']['name'];
+	    }
+		$this->session->unset_userdata('item');
+		$this->session->set_userdata('item', $edited);
+		$item = $this->session->userdata('item');
+		if($this->errors($item)){			
+			$this->edit($num);
+		}else{
+			if ($_FILES['Image1']['name']) { // Upload the first image
+	        	$this->upload->do_upload('Image1');
+	            $data = $this->upload->data();
+	            $temp['image'] = $data['file_name'];
+	        }
+
+	        if ($_FILES['Image2']['name']) { // Upload the second image
+	        	$this->upload->do_upload('Image2');
+	        	$data = $this->upload->data();
+	        	$temp['image2'] = $data['file_name'];
+			}
+
+	        if ($_FILES['Image3']['name']) { // Upload the third image
+	        	$this->upload->do_upload('Image3');
+	        	$data = $this->upload->data();
+	        	$temp['image3'] = $data['file_name'];
+	        }
+	        $temp['id'] = $edited['id'];
+			$temp['name'] = $edited['name'];
+			$temp['description'] = $edited['description'];
+			$temp['category'] = $edited['category'];
+			$temp['timeChanged'] = date("YmdHi");
+			$this->attractions->add($temp);
+			redirect('/admin');
+		}
+    }
+
 }
 
 /* End of file welcome.php */
