@@ -19,21 +19,20 @@ class Eat extends Application {
     //-------------------------------------------------------------
 
     function index() {
+        $this->load->helper('formfields');
 		$this->data['pagebody'] = 'eat';    // this is the view we want shown
-		$this->data['fillhead']  = 'topFiller';
+		$this->data['fillhead'] = 'topFiller';
 		$this->data['header'] = 'header';
 		$this->data['footer'] = 'footer';
         // build the list of options, to pass on to our view
-        $source = $this->attractions->all();
+        $source = $this->attractions->some('category', 'eat');
         $options = "";
         foreach ($source as $record) {
-			if($record->category == 'eat'){
-                htmlspecialchars($record->name, ENT_QUOTES, 'UTF-8');
-                htmlspecialchars($record->image, ENT_QUOTES, 'UTF-8');
-                htmlspecialchars($record->where, ENT_QUOTES, 'UTF-8');
-                htmlspecialchars($record->category, ENT_QUOTES, 'UTF-8');
-                $options .= $this->parser->parse('eat2', $record, true);
-            }
+            htmlspecialchars($record->name, ENT_QUOTES, 'UTF-8');
+            htmlspecialchars($record->image, ENT_QUOTES, 'UTF-8');
+            htmlspecialchars($record->where, ENT_QUOTES, 'UTF-8');
+            htmlspecialchars($record->category, ENT_QUOTES, 'UTF-8');
+            $options .= $this->parser->parse('attraction', $record, true);
         }
         $this->data['fill'] = $options;
         $this->render();

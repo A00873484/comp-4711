@@ -40,33 +40,33 @@ class Home extends Application {
         $firstnum = 0;
         $secondnum = 0;
         $thirdnum = 0;
-        foreach ($source as $record) {
-        	htmlspecialchars($record->timeChanged, ENT_QUOTES, 'UTF-8');
-        	if($record->timeChanged > $firstnum){
-        		if($firstnum>$secondnum){
-        			$second = $first;
-        			$secondnum = $firstnum;
-        		}
-        		else if($firstnum>$thirdnum){
-        			$third = $first;
-        			$thirdnum = $firstnum;
-        		}
-        		$first = $record;
-        		$firstnum = $record->timeChanged;
-        	}
-        	else if($record->timeChanged > $secondnum){
-        		if($second>$third){
-        			$third = $second;
-        			$third = $second;
-        		}
-        		$second = $record;
-        		$secondnum = $record->timeChanged;
-        	}
-        	else if($record->timeChanged > $thirdnum){
-        		$third = $record;
-        		$thirdnum = $record->timeChanged;
-        	}
-        }
+        // foreach ($source as $record) {
+        // 	htmlspecialchars($record->timeChanged, ENT_QUOTES, 'UTF-8');
+        // 	if($record->timeChanged > $firstnum){
+        // 		if($firstnum>$secondnum){
+        // 			$second = $first;
+        // 			$secondnum = $firstnum;
+        // 		}
+        // 		else if($firstnum>$thirdnum){
+        // 			$third = $first;
+        // 			$thirdnum = $firstnum;
+        // 		}
+        // 		$first = $record;
+        // 		$firstnum = $record->timeChanged;
+        // 	}
+        // 	else if($record->timeChanged > $secondnum){
+        // 		if($second>$third){
+        // 			$third = $second;
+        // 			$third = $second;
+        // 		}
+        // 		$second = $record;
+        // 		$secondnum = $record->timeChanged;
+        // 	}
+        // 	else if($record->timeChanged > $thirdnum){
+        // 		$third = $record;
+        // 		$thirdnum = $record->timeChanged;
+        // 	}
+        // }
 		htmlspecialchars($first->name, ENT_QUOTES, 'UTF-8');
         htmlspecialchars($first->image, ENT_QUOTES, 'UTF-8');
         htmlspecialchars($first->where, ENT_QUOTES, 'UTF-8');
@@ -79,13 +79,10 @@ class Home extends Application {
         htmlspecialchars($third->image, ENT_QUOTES, 'UTF-8');
         htmlspecialchars($third->where, ENT_QUOTES, 'UTF-8');
         htmlspecialchars($third->category, ENT_QUOTES, 'UTF-8');
-        $options .= $this->parser->parse('homepage2', $first, true);
-        $options .= $this->parser->parse('homepage2', $second, true);
-        $options .= $this->parser->parse('homepage2', $third, true);
-		 			
-				
-			
-        
+
+        $options .= $this->parser->parse('attraction', $first, true);
+        $options .= $this->parser->parse('attraction', $second, true);
+        $options .= $this->parser->parse('attraction', $third, true);
 		
         $this->data['fill'] = $options;
         $this->render();
