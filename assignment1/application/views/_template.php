@@ -39,7 +39,10 @@
 	<div class="body-outer-wrapper ">
 		<div class="body-wrapper">
 			{header}
-			{fillhead}			
+			{fillhead}
+			<div class="{alerting}">
+                {errormessages}
+            </div>			
             {content}
 			{footer}
 		</div>

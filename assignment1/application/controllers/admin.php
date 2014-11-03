@@ -17,7 +17,7 @@ class Admin extends Application {
     //-------------------------------------------------------------
     //  The normal pages
     //-------------------------------------------------------------
-
+    private $count;
     function index() {
         $this->data['pagebody'] = 'admin';
 		$this->data['fillhead']  = 'topFiller';
@@ -86,7 +86,6 @@ class Admin extends Application {
 		$edited = $_POST;
 		$temp = $this->attractions->get($num);
 		$edited['code'] = $num;
-		print_r(empty($_FILES));
 		if (!empty($_FILES)) {
 			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/img/';
 			$config['allowed_types'] = 'gif|jpg|png';
@@ -96,37 +95,10 @@ class Admin extends Application {
 			$config['encrypt_name'] = TRUE;
 			$config['remove_spaces'] = TRUE;
 		    $this->load->library('upload', $config);
-	        if (isset($_FILES['Image1']['name'])) { // Upload the first image
-	        	$this->upload->do_upload('Image1');
-	            $data = $this->upload->data();
-	            print_r($data);
-	            echo $data['full_path']; // Full path to the image, needs to be stored in the database
-	            echo '<br/>';
-	            echo '<br/>';
-	            echo '<br/>';
-	        }
-
-	        if (isset($_FILES['Image2']['name'])) { // Upload the second image
-	        	$this->upload->do_upload('Image2');
-	            $data = $this->upload->data();
-	            print_r($data);
-	            echo $data['full_path']; // Full path to the image, needs to be stored in the database
-	            echo '<br/>';
-	            echo '<br/>';
-	            echo '<br/>';
-	        }
-
-	        if (isset($_FILES['Image3']['name'])) { // Upload the third image
-	        	$this->upload->do_upload('Image3');
-	            $data = $this->upload->data();
-	            print_r($data);
-	            echo $data['full_path']; // Full path to the image, needs to be stored in the database
-	            echo '<br/>';
-	            echo '<br/>';
-	            echo '<br/>';
-	        }
+		    $edited['image'] = $_FILES['Image1']['name'];
+		    $edited['image2'] = $_FILES['Image2']['name'];
+		    $edited['image3'] = $_FILES['Image3']['name'];
 	    }
-
 		$this->session->unset_userdata('item');
 		$this->session->set_userdata('item', $edited);
 		$item = $this->session->userdata('item');
@@ -140,13 +112,29 @@ class Admin extends Application {
 			htmlspecialchars($temp->image, ENT_QUOTES, 'UTF-8');
 			htmlspecialchars($temp->image2, ENT_QUOTES, 'UTF-8');
 			htmlspecialchars($temp->image3, ENT_QUOTES, 'UTF-8');
-			
+			if ($_FILES['Image1']['name']) { // Upload the first image
+	        	$this->upload->do_upload('Image1');
+	            $data = $this->upload->data();
+	            $temp->image = $data['file_name'];
+	        }
+
+	        if ($_FILES['Image2']['name']) { // Upload the second image
+	        	$this->upload->do_upload('Image2');
+	        	$data = $this->upload->data();
+	        	$temp->image2 = $data['file_name'];
+			}
+
+	        if ($_FILES['Image3']['name']) { // Upload the third image
+	        	$this->upload->do_upload('Image3');
+	        	$data = $this->upload->data();
+	        	$temp->image3 = $data['file_name'];
+	        }
 			$temp->name = $edited['name'];
 			$temp->description = $edited['description'];
 			$temp->category = $edited['category'];
 			$temp->timeChanged = date("YmdHi");
 			$this->attractions->update($temp);
-			// redirect('/admin');
+			redirect('/admin');
 		}
     }
 
@@ -156,6 +144,21 @@ class Admin extends Application {
 		$count = 0;
 		if(!$items['name']){
 			$this->errors['name'] = 'Your Name textbox is empty';
+			$count = 1;
+		}
+		$image = substr($items['image'], -4);
+		if($items['image'] && ($image != '.png' && $image != '.jpg' && $image != '.gif')){
+			$this->errors['image'] = 'Your First image is Invalid';
+			$count = 1;
+		}
+		$image2 = substr($items['image2'], -4);
+		if($items['image2'] && ($image2 != '.png' && $image2 != '.jpg' && $image2 != '.gif')){
+			$this->errors['image2'] = 'Your Second image is Invalid';
+			$count = 1;
+		}
+		$image3 = substr($items['image3'], -4);
+		if($items['image3'] && ($image3 != '.png' && $image3 != '.jpg' && $image3 != '.gif')){
+			$this->errors['image3'] = 'Your Third image is Invalid';
 			$count = 1;
 		}
 		return $count == 0 ? false : true;

@@ -34,8 +34,23 @@ class Application extends CI_Controller {
 		$this->data['fillhead'] = $this->parser->parse($this->data['fillhead'], $this->data, true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
 		$this->data['footer'] = $this->parser->parse($this->data['footer'], $this->data, true);
+        $this->data['errormessages'] = $this->scold();
 		$this->parser->parse('_template', $this->data);
     }
+
+    function scold() {
+        $result = '';
+        if(count($this->errors) < 1) {
+            $this->data['alerting'] = '';
+        } else {
+            $this->data['alerting'] = 'alert alert-error';
+            foreach($this->errors as $msg) {
+                $result .= $msg . '<br/>';
+            }
+        }
+        return $result;
+    }
+
 
 }
 

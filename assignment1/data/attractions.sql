@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 02, 2014 at 08:14 PM
+-- Generation Time: Nov 02, 2014 at 11:21 PM
 -- Server version: 5.6.20
 -- PHP Version: 5.5.15
 
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `attractions` (
 --
 
 INSERT INTO `attractions` (`id`, `name`, `image`, `image2`, `image3`, `where`, `description`, `category`, `timeChanged`) VALUES
-(1, 'Hiking', 'mount-fuji-sunset2.jpg', 'MountainTop.jpg', 'PondnMountain.jpg', '/select/select/1', '    Hike the world famous mountain displayed in famous paintings and characterizes the very image of Japan, Mount Fuji. When you hike this mountain you will not have a trophy to add to your life accomplishments.<br/> Mount Fuji gives a great view from its top and the Hike up is gorgeous. Close to this landmark is another nice hike that leads you to an part of japan that has colors you would find in a canvas of a extravagant painting except better. <br/> There are tails of a treasure hidden in a valley near Mount Fuji, one hidden in a cave whose entrance has been shut by a large stone. The story''s don''t consistently specify the treasure is but most have speculated that it would be gold, some say that that it holds ancient scrolls, either way no one has found it, that we know of. but whos to stop you from looking.\r\n', 'play', 201411021825),
+(1, 'Hiking', 'mount-fuji-sunset2.jpg', 'MountainTop.jpg', 'PondnMountains.jpg', '/select/select/1', '    Hike the world famous mountain displayed in famous paintings and characterizes the very image of Japan, Mount Fuji. When you hike this mountain you will not have a trophy to add to your life accomplishments.<br/> Mount Fuji gives a great view from its top and the Hike up is gorgeous. Close to this landmark is another nice hike that leads you to an part of japan that has colors you would find in a canvas of a extravagant painting except better. <br/> There are tails of a treasure hidden in a valley near Mount Fuji, one hidden in a cave whose entrance has been shut by a large stone. The story''s don''t consistently specify the treasure is but most have speculated that it would be gold, some say that that it holds ancient scrolls, either way no one has found it, that we know of. but whos to stop you from looking.\r\n', 'play', 201411022318),
 (2, 'Culture', 'Culture.jpg', 'OldBuilding.jpg', 'RedStripeBuilding.jpg', '/select/select/2', 'Experience the Japanese festivals in full, find the hidden treasures buried in hundreds of years of ancient culture, experience the mix between the old and new brought about in the culture of today!', 'play', 2147483647),
 (3, 'City Life', 'SeaShore.jpg', 'NightStreet.jpg', 'BoatsnFlowers.jpg', '/select/select/3', 'Get a glimpse of a futuristic city here in the modern city of Tokyo. There is always something going on when you are here and you will always find something to do while you are here. Walking down the street you can just look around and be entertained. ', 'play', 201411020824),
 (4, 'Hotel Hoshimi', 'CitySkyline.jpg', 'Birds.jpg', 'NightBridge1.jpg', '/select/select/4', 'If you want the most comfortable night you can possibly have in Japan then you have to stay here for your nights. With a incredible view of the city and the most comfortable bed, for the small price of $70 a day for a one bed and bathroom.', 'sleep', 2147483647),
