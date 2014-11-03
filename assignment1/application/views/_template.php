@@ -26,6 +26,7 @@
 	<link rel="stylesheet" href="/css/font-awesome.css" type="text/css" media="all">
 	<link rel="stylesheet" href="/css/jquery-ui-1.8.16.custom.css" type="text/css" media="all">
 	<link rel="stylesheet" href="/css/flexslider.css" type="text/css" media="all">
+	<link rel="stylesheet" href="/css/pgwslider.css" type="text/css">
 	<link rel="stylesheet" href="/css/skin.css" type="text/css">
 	<script type="text/javascript" src="/js/jquery.js"></script>
 	<script type="text/javascript" defer src="/js/jquery-migrate.min.js"></script>
@@ -69,5 +70,7 @@
     <script type="text/javascript" defer src="/js/jquery.cycle.js"></script>
     <script type="text/javascript" defer src="/js/blog-carousel.js"></script>
     <script type="text/javascript" defer src="/js/jquery.flexslider.js"></script>
+    <script type="text/javascript" defer src="/js/pgwslider.js"></script>
+    <script type="text/javascript" defer src="/js/main.js"></script>
 </body>
 </html>

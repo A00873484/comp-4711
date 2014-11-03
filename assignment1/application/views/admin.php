@@ -37,6 +37,8 @@
 										</div>
 										<div class="clear"></div>
 									</div>
+									 <a href="/admin/add"><button class="btn btn-primary">Add</button></a>
+									 <br><br>
 								</div>
 								<div class="container">
 									<table class="table">
@@ -50,7 +52,7 @@
 										</tr>
 										{fill}
 									</table>
-									<a href="/admin/add">Add</a>
+									
 								</div>
 							</div>
 						</div>

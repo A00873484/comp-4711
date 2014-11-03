@@ -124,6 +124,16 @@ select { padding: 0; }
 	width: 500px !important;
 	margin: 0 auto 100px !important;
 }
+
+/*--- specific attraction ---*/
+.attraction-descript {
+	padding: 20px 10px;
+	margin: 10px 0;
+	background-color: #EEE;
+	/*min-height: 200px;*/
+	font-size: 1.2em;
+	color: black;
+}
 /*--- color animation ---*/
 a, .portfolio-context{
 	transition: color 300ms, background-color 300ms, opacity 300ms;

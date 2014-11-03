@@ -40,29 +40,14 @@
 								</div>
 								<div class="container">
 									<div class="row">
-										<div class="twelve columns package-item-class package-item-class-1">
-											<div class="package-item-holder">
-												<div class="row">
-													<div class="twelve columns gdl-package-grid2">
-														<div class="package-content-wrapper">
-															<div class="package-thumbnail-outer-wrapper">
-																<div class="package-media-wrapper gdl-image">
-																	<img src="/img/{image}" alt="">
-																	
-																</div>
-																<div class="package-title-wrapper">
-																	<div class="package-title-overlay"></div>
-																	<h2 class="package-title full-width">
-																		<a>{name}<br><br>{description}</a>
-																	</h2>
-																</div>
-															</div>
-														</div>
-													</div>
-													<div class="clear"></div>
-												</div>
-											</div>
+										<div class="twelve columns">
+											<ul class="pgwSlider">
+												<li><img src="/img/{firstimage}"></li>
+												<li><img src="/img/{secondimage}"></li>
+												<li><img src="/img/{thirdimage}"></li>
+											</ul>
 											<div class="clear"></div>
+											<div class="attraction-descript">{description}</div>
 										</div>
 										<div class="clear"></div>
 									</div>
