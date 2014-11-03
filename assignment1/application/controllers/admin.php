@@ -83,28 +83,48 @@ class Admin extends Application {
     }
 
     function post($num) {
-        // Handle edit form
 		$edited = $_POST;
 		$temp = $this->attractions->get($num);
 		$edited['code'] = $num;
-
-		if (!empty($edited['Image1'])) {
-	        $config['upload_path'] = ''.$_SERVER['DOCUMENT_ROOT'].'/img/';
-	        $config['allowed_types'] = 'gif|jpg|png';
-	        $config['max_size'] = '5000';
-	        $config['max_width']  = '2000';
-	        $config['max_height']  = '2000';
-	        $config['encrypt_name'] = TRUE;
-	        $config['remove_spaces'] = TRUE;
-
-	        $this->load->library('upload', $config);
-	        print_r($this->upload->do_upload('Image1'));
-	        if ($this->upload->do_upload('Image1')) {
-
-	            $data = array('upload_data' => $this->upload->data());
+		print_r(empty($_FILES));
+		if (!empty($_FILES)) {
+			$config['upload_path'] = $_SERVER['DOCUMENT_ROOT'].'/img/';
+			$config['allowed_types'] = 'gif|jpg|png';
+			$config['max_size'] = '5000';
+			$config['max_width']  = '2000';
+			$config['max_height']  = '2000';
+			$config['encrypt_name'] = TRUE;
+			$config['remove_spaces'] = TRUE;
+		    $this->load->library('upload', $config);
+	        if (isset($_FILES['Image1']['name'])) { // Upload the first image
+	        	$this->upload->do_upload('Image1');
 	            $data = $this->upload->data();
+	            print_r($data);
+	            echo $data['full_path']; // Full path to the image, needs to be stored in the database
+	            echo '<br/>';
+	            echo '<br/>';
+	            echo '<br/>';
 	        }
 
+	        if (isset($_FILES['Image2']['name'])) { // Upload the second image
+	        	$this->upload->do_upload('Image2');
+	            $data = $this->upload->data();
+	            print_r($data);
+	            echo $data['full_path']; // Full path to the image, needs to be stored in the database
+	            echo '<br/>';
+	            echo '<br/>';
+	            echo '<br/>';
+	        }
+
+	        if (isset($_FILES['Image3']['name'])) { // Upload the third image
+	        	$this->upload->do_upload('Image3');
+	            $data = $this->upload->data();
+	            print_r($data);
+	            echo $data['full_path']; // Full path to the image, needs to be stored in the database
+	            echo '<br/>';
+	            echo '<br/>';
+	            echo '<br/>';
+	        }
 	    }
 
 		$this->session->unset_userdata('item');
@@ -126,7 +146,7 @@ class Admin extends Application {
 			$temp->category = $edited['category'];
 			$temp->timeChanged = date("YmdHi");
 			$this->attractions->update($temp);
-			redirect('/admin');
+			// redirect('/admin');
 		}
     }
 

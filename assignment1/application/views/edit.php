@@ -25,7 +25,7 @@
 									</div>
 									<div class="row center">
 										<div class="twelve columns edit-form">
-											<form action="/admin/post/{num}" method="post">
+											<form action="/admin/post/{num}" method="post" enctype="multipart/form-data">
 												{id}
 												{name}
 												{description}
