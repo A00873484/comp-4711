@@ -28,6 +28,18 @@
  * By default development will show errors but testing and live will hide them.
  */
 
+// define('ENV_DEVELOPMENT', 'development');
+// define('ENV_TESTING', 'testing');
+// define('ENV_PRODUCTION', 'production');
+
+// if (strpos($_SERVER['SERVER_NAME'], 'testing') === true) {
+//    define('ENVIRONMENT', ENV_TESTING);
+// } elseif (strpos($_SERVER['SERVER_NAME'], '.com') > 0) {
+//     define('ENVIRONMENT', ENV_PRODUCTION);
+// } else {
+//     define('ENVIRONMENT', ENV_DEVELOPMENT);
+// }
+
 if (defined('ENVIRONMENT'))
 {
 	switch (ENVIRONMENT)

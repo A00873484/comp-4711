@@ -45,7 +45,8 @@
 | the active record class
 */
 
-$active_group = 'default';
+// $active_group = ENVIRONMENT;
+$active_group = "default";
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
@@ -64,6 +65,22 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+/**
+ * Alternative setting environment.
+ */
+
+// $db[ENV_DEVELOPMENT] = $db['default'];
+// $db[ENV_DEVELOPMENT]['database'] = 'bcitx762_d04';
+
+// $db[ENV_TESTING] = $db['default'];
+// $db[ENV_TESTING]['username'] = "bcitx762_d04";
+// $db[ENV_TESTING]['password'] = ")*vTINvUmiCE";
+// $db[ENV_TESTING]['database'] = "bcitx762_d04";
+
+// $db[ENV_PRODUCTION] = $db['default'];
+// $db[ENV_PRODUCTION]['username'] = "bcitx762_d04";
+// $db[ENV_PRODUCTION]['password'] = ")*vTINvUmiCE";
+// $db[ENV_PRODUCTION]['database'] = "bcitx762_d04";
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
