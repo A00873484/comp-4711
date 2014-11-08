@@ -15,27 +15,27 @@ if (!defined('APPPATH'))
     <head>
         <title>{title}</title>
         <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
     </head>
     <body>
-        <div class="container">
-            <div id="topstuff" class="row">
-                <p></p>
-            </div>           
-            <div id="content">
-                <h1>{title}</h1>
-				<div class="{alerting}">
-                    {errormessages}
-                </div>
-                {content}
+        <div id="wrapper">
+            <div id="header">
+			<h1>Lab 8</h1>
+			<br/>
+            </div>
+            <div class="alone"></div>
+            <div>
+                <div class="{alerting}">
+                    {errormessages}
+                </div>
+                <div id="content">                    
+                    {content}
+                </div>
             </div>
             <div id="footer" class="span12">
                 Copyright &copy; 2014,  <a href="mailto:someone@somewhere.com">Me</a>.
             </div>
         </div>
-        <script src="/assets/js/jquery-1.11.1.min.js"></script>
-        <script src="/assets/js/bootstrap.min.js"></script>
     </body>
 </html>
