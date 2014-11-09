@@ -65,16 +65,6 @@ class Welcome extends Application {
         
         $this->render();
 	}
-	
-	function lab7start() {
-		$this->data['title'] = "Your Custom Travel Plan";
-        $this->data['pagebody'] = "lab7start";
-        
-        $ports = $this->schedule->retrieve_ports();
-        $this->data['ports'] = $ports;
-        
-        $this->render(); 
-	}
 
 }
 

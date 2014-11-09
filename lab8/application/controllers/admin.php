@@ -9,6 +9,11 @@
  *
  * ------------------------------------------------------------------------
  */
+ 
+define("REST_SERVER", "services.local/menuitem");
+define("REST_PORT", "80");
+
+ 
 class Admin extends Application {
 
     function __construct() {

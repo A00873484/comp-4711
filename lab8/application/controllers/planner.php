@@ -11,6 +11,9 @@
  *
  * @author Danny
  */
+define("RPC_SERVER", "lab8.local/planner");//services.local/schedules
+define("RPC_PORT", "80");
+ 
 class Planner extends Application {
 
     function __construct() {
@@ -23,7 +26,7 @@ class Planner extends Application {
         $this->data['title'] = "Available Ports";
         $this->data['pagebody'] = "show_ports";
 
-        $ports = $this->schedule->retrieve_ports();
+        $ports = $this->get_ports_remotely();
         $this->data['ports'] = $ports;
 
         $this->render();
@@ -50,14 +53,13 @@ class Planner extends Application {
     function get_plan($source, $destination) {
         $this->data['title'] = "Your custom travel plan";
         $this->data['pagebody'] = 'show_plan';
-
+		
         $this->data['source'] = $source;
         $this->data['destination'] = $destination;
-
-        $departures = $this->schedule->retrieve_sailings($source, $destination);
+        $departures = $this->get_trips_remotely($source, $destination);
         if (empty($departures)) {
             $this->errors[] = "From " + $source + " to " + $destination + "\n" + "Sorry, but you can't get there from here.";
-            redirect("/");
+            //redirect("/");
         } else {
             $temp = "";
             foreach ($departures as $row) {
@@ -67,5 +69,36 @@ class Planner extends Application {
         }
         $this->render();
     }
+	
+	function get_trips_remotely($source, $dest) {
+        $this->load->library('xmlrpc');
+        $this->load->library('xmlrpcs');
+        $this->xmlrpc->server(RPC_SERVER, RPC_PORT);
+		$this->xmlrpc->method('get_trip.ping');
+		$request = array($source, $dest);
+		return $this->xmlrpc->request($request);
+	}
+	
+	function get_ports_remotely(){
+        $this->load->library('xmlrpc');
+        $this->load->library('xmlrpcs');
+		
+        $this->xmlrpc->server(RPC_SERVER, RPC_PORT);
+		$this->xmlrpc->method('get_ports');
+		$request = array();
+		return $this->xmlrpc->request($request);
+	}
 
+	function get_ports() {
+		$response = $this->schedule->retrieve_ports();
+        return $this->xmlrpc->send_response($response);
+	}
+    
+	/*
+	 * Show an individual trip.
+	 */
+    function get_trip($source, $destination) {
+        return $this->schedule->retrieve_sailings($source, $destination);
+    }
+	
 }
