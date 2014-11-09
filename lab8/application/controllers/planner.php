@@ -11,7 +11,7 @@
  *
  * @author Danny
  */
-define("RPC_SERVER", "lab8.local/planner");//services.local/schedules
+define("RPC_SERVER", "services.local/schedules");
 define("RPC_PORT", "80");
  
 class Planner extends Application {
