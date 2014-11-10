@@ -6,11 +6,6 @@
  * and open the template in the editor.
  */
 
-/**
- * Description of schedule
- *
- * @author Danny
- */
 define("RPC_SERVER", "services.local/schedules");
 define("RPC_PORT", "80");
  
@@ -24,7 +19,7 @@ class Planner extends Application {
      */
     function index() {
         $this->data['title'] = "Available Ports";
-        $this->data['pagebody'] = "show_ports";
+        $this->data['pagebody'] = "lab7start";
 
         $ports = $this->get_ports_remotely();
         $this->data['ports'] = $ports;
@@ -74,31 +69,37 @@ class Planner extends Application {
         $this->load->library('xmlrpc');
         $this->load->library('xmlrpcs');
         $this->xmlrpc->server(RPC_SERVER, RPC_PORT);
-		$this->xmlrpc->method('get_trip.ping');
+		$this->xmlrpc->method('get_trip');
+		$request = array($source, $dest);
+		$this->xmlrpc->request($request);
+		$this->xmlrpc->set_debug(true);
+		if ( ! $this->xmlrpc->send_request())
+		{
+			echo $this->xmlrpc->display_error();
+		}
+		else
+		{
+			return ($this->xmlrpc->display_response());
+		}
 		$request = array($source, $dest);
 		return $this->xmlrpc->request($request);
 	}
 	
 	function get_ports_remotely(){
-        $this->load->library('xmlrpc');
-        $this->load->library('xmlrpcs');
-		
-        $this->xmlrpc->server(RPC_SERVER, RPC_PORT);
+		$this->load->library('xmlrpc');
+		$this->load->library('xmlrpcs');
+		$this->xmlrpc->server(RPC_SERVER, RPC_PORT);
 		$this->xmlrpc->method('get_ports');
 		$request = array();
-		return $this->xmlrpc->request($request);
+		$this->xmlrpc->request($request);
+		if ( ! $this->xmlrpc->send_request())
+		{
+			echo $this->xmlrpc->display_error();
+		}
+		else
+		{
+			return ($this->xmlrpc->display_response());
+		}
 	}
-
-	function get_ports() {
-		$response = $this->schedule->retrieve_ports();
-        return $this->xmlrpc->send_response($response);
-	}
-    
-	/*
-	 * Show an individual trip.
-	 */
-    function get_trip($source, $destination) {
-        return $this->schedule->retrieve_sailings($source, $destination);
-    }
 	
 }

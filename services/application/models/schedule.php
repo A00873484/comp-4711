@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Description of schedule
- *
- * @author Danny
- */
 class Schedule extends CI_Model {
     
     // Store the SimpleXml Object
