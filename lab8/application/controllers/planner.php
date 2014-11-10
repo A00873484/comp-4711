@@ -72,7 +72,7 @@ class Planner extends Application {
 		$this->xmlrpc->method('get_trip');
 		$request = array($source, $dest);
 		$this->xmlrpc->request($request);
-		$this->xmlrpc->set_debug(true);
+		//$this->xmlrpc->set_debug(true);
 		if ( ! $this->xmlrpc->send_request())
 		{
 			echo $this->xmlrpc->display_error();

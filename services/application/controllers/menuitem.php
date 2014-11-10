@@ -25,23 +25,8 @@ class Planner extends Application {
 	/*
      * Show all available port for the ferry.
      */
-    function get_ports($request) {
-		$parameters = $request->output_parameters();
-		$ports = $this->schedule->retrieve_ports();
-		$response = array();
-		foreach (ports as $port)
-			$response[] = array($port, 'struct');
-		$response = array($response, 'struct');
-        return $this->xmlrpc->send_response($response);
-    }
-    
-	/*
-	 * Show an individual trip.
-	 */
-    function get_trip($request) {
-		$parameters = $request->output_parameters();
-        $response = $this->schedule->retrieve_sailings($parameters);
-		return $this->xmlrpc->send_response($response);
-    }
+    function code($num){
+	
+	}
 	
 }

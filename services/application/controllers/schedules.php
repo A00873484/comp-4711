@@ -40,10 +40,10 @@ class Schedules extends Application {
 	 */
     function get_trip($request) {
 		$parameters = $request->output_parameters();
-        $ports = $this->schedule->retrieve_sailings($parameters);
+        $ports = $this->schedule->retrieve_sailings($parameters[0], $parameters[1]);
 		$response = array();
-		//foreach ($ports as $port)
-			//$response[] = array($port, 'struct');
+		foreach ($ports as $port)
+			$response[] = array($port, 'struct');
 		$response = array($response, 'struct');
         return $this->xmlrpc->send_response($response);
     }
