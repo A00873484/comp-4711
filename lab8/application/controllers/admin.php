@@ -18,8 +18,11 @@ class Admin extends Application {
 
     function __construct() {
         parent::__construct();
-		$this->rest->initialize(array('server' => REST_SERVER));
-        $this->rest->option(CURLOPT_PORT, REST_PORT);
+		$this->load->library('rest');
+		$this->remote_server = 'http://' . REST_SERVER;
+        $this->remote_port = REST_PORT;
+        $this->rest->initialize(array('server' => $this->remote_server));
+        $this->rest->option(CURLOPT_PORT, $this->remote_port);
     }
 	
 	//Displays all of the items without edit options.
@@ -29,7 +32,6 @@ class Admin extends Application {
 
         // Get all the completed orders
         $menuitems = $this->get_all();
-
         // Build a multi-dimensional array for reporting
         $items = array();
         foreach ($menuitems as $item) {
@@ -269,7 +271,10 @@ class Admin extends Application {
 	}
 	
 	function update_item_remotely($item){
-		$retrieved = $this->rest->put('/menuitem/code/' . $item['id'], $record);
+		$record = array('code' => $item['code']);
+		print_r($item['code']);
+        $record = array_merge($record, $_POST);
+		$retrieved = $this->rest->put('/menuitem/code/' . $item['code'], $record);
 		return $retrieved;
 	}
 	

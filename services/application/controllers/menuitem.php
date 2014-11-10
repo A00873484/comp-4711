@@ -6,27 +6,45 @@
  * and open the template in the editor.
  */
 
-class Planner extends Application {
+require APPPATH . '/libraries/rest_controller.php';
+ 
+class Menuitem extends Rest_controller {
 
     function __construct() {
         parent::__construct();
     }
     
-    function index() {
-        $this->load->library('xmlrpc');
-		$this->load->library('xmlrpcs');
-		$config['functions']['get_ports'] = array('function' => 'schedules.get_ports');
-        $config['functions']['get_trip'] = array('function' => 'schedules.get_trip');
-        $config['object'] = $this;
-        $this->xmlrpcs->initialize($config);
-        $this->xmlrpcs->serve();
+	function index_get() {
+        $key = $this->get('code');
+        if (!$key) {
+            $this->response($this->menu->all(), 200);
+        } else {
+            $result = $this->menu->get($key);
+            if ($result != null)
+                $this->response($result, 200);
+            else
+                $this->response(array('error' => 'item not found!'), 404);
+        }
     }
-    
-	/*
-     * Show all available port for the ferry.
-     */
-    function code($num){
-	
-	}
+
+    function index_post() {
+        $key = $this->get('code');
+        $record = array_merge(array('code' => $key), $_POST);
+        $this->menu->add($record);
+        $this->response(array('ok'), 200);
+    }
+
+    function index_put() {
+        $key = $this->get('code');
+        $record = array_merge(array('code' => $key), $this->_put_args);
+        $this->menu->update($record);
+        $this->response(array('ok'), 200);
+    }
+
+    function index_delete() {
+        $key = $this->get('code');
+        $this->menu->delete($key);
+        $this->response(array('ok'), 200);
+    }
 	
 }
