@@ -93,3 +93,15 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `user_data` text NOT NULL,
   PRIMARY KEY  (`session_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` varchar(10) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `comp4711`.`users` (`id`, `name`, `password`, `role`) VALUES ('donald', 'Donald Duck', MD5('duck'), 'admin');
+INSERT INTO `comp4711`.`users` (`id`, `name`, `password`, `role`) VALUES ('mickey', 'Mickey Mouse', MD5('mouse'), 'user');
