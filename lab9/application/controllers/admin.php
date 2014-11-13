@@ -9,20 +9,10 @@
  *
  * ------------------------------------------------------------------------
  */
- 
-define("REST_SERVER", "services.local/menuitem");
-define("REST_PORT", "80");
-
- 
 class Admin extends Application {
 
     function __construct() {
         parent::__construct();
-		$this->load->library('rest');
-		$this->remote_server = 'http://' . REST_SERVER;
-        $this->remote_port = REST_PORT;
-        $this->rest->initialize(array('server' => $this->remote_server));
-        $this->rest->option(CURLOPT_PORT, $this->remote_port);
     }
 	
 	//Displays all of the items without edit options.
@@ -31,7 +21,8 @@ class Admin extends Application {
         $this->data['pagebody'] = 'admin/show_menu';
 
         // Get all the completed orders
-        $menuitems = $this->get_all();
+        $menuitems = $this->menu->all();
+
         // Build a multi-dimensional array for reporting
         $items = array();
         foreach ($menuitems as $item) {
@@ -56,7 +47,7 @@ class Admin extends Application {
         $this->data['pagebody'] = 'admin/listitem';
 
         // Get all the completed orders
-        $menuitems = $this->get_all();
+        $menuitems = $this->menu->all();
         $itemrows = "";
         // Build a multi-dimensional array for reporting
         $items = array();
@@ -92,7 +83,7 @@ class Admin extends Application {
         $this->data['title'] = 'Jim\'s Joint Maintenance!';
         $this->data['pagebody'] = 'admin/edititem';
         $this->data['code'] = $code;
-		$temp = $this->get_item_remotely($code);
+		$temp = $this->menu->some('code', $code)[0];
 		$this->data['name'] = $temp->name;
 		$this->data['description'] = $temp->description;
 		$this->data['price'] = $temp->price;
@@ -119,12 +110,12 @@ class Admin extends Application {
     function post3() {
         // Handle edit form
 		$edited = $_POST;
-		$temp = $this->get_item_remotely($edited['code']);
+		$temp = $this->menu->some('code', $edited['code'])[0];
 		$temp->name = $edited['name'];
 		$temp->description = $edited['description'];
 		$temp->price = $edited['price'];
 		$temp->category = $edited['category'];
-		$this->update_item_remotely($temp->code);
+		$this->menu->update($temp);
 		redirect('/');
     }
 	
@@ -155,7 +146,7 @@ class Admin extends Application {
 			$this->data['picture'] = $item['picture'];
 		}else{
 			$this->data['code'] = $code;
-			$temp = $this->get_item_remotely($code);
+			$temp = $this->menu->some('code', $code)[0];
 			$this->data['name'] = $temp->name;
 			$this->data['description'] = $temp->description;
 			$this->data['price'] = $temp->price;			
@@ -183,7 +174,7 @@ class Admin extends Application {
     function post4() {
         // Handle edit form
 		$edited = $_POST;
-		$temp = $this->get_item_remotely($edited['code']);
+		$temp = $this->menu->some('code', $edited['code'])[0];
 		$edited['picture'] = $temp->picture;
 		$this->session->unset_userdata('item');
 		$this->session->set_userdata('item', $edited);
@@ -195,7 +186,7 @@ class Admin extends Application {
 			$temp->description = $edited['description'];
 			$temp->price = $edited['price'];
 			$temp->category = $edited['category'];
-			$this->update_item_remotely($temp->code);
+			$this->menu->update($temp);
 			redirect('/');
 		}
 		
@@ -220,7 +211,7 @@ class Admin extends Application {
 			$this->data['picture'] = showImage('Picture', $item['picture'], $width = 120, $height = 80);
 			$this->data['submit'] = makeSubmitButton('Submit', 'submit');
 		}else{
-			$temp = $this->get_item_remotely($num);
+			$temp = $this->menu->get($num);
 			$this->data['code'] = makeTextField('Code', 'code', $temp->code, $explain = "The Item ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = true);	
 			$this->data['name'] = makeTextField('Name', 'name', $temp->name, 'Short name for this menu item, suited to customer ordering');
 			$this->data['description'] = makeTextArea('Description', 'description', $temp->description, "The description of the item, anything is valid");
@@ -242,7 +233,7 @@ class Admin extends Application {
     function post5($num) {
         // Handle edit form
 		$edited = $_POST;
-		$temp = $this->get_item_remotely($num);
+		$temp = $this->menu->get($num);
 		$edited['code'] = $num;
 		$edited['picture'] = $temp->picture;
 		$this->session->unset_userdata('item');
@@ -255,27 +246,10 @@ class Admin extends Application {
 			$temp->description = $edited['description'];
 			$temp->price = $edited['price'];
 			$temp->category = $edited['category'];
-			$this->update_item_remotely($temp->code);
+			$this->menu->update($temp);
 			redirect('/');
 		}
     }
-	
-	function get_all(){
-		$retrieved = $this->rest->get('/menuitem');
-		return $retrieved;
-	}
-	
-	function get_item_remotely($num){
-		$retrieved = $this->rest->get('/menuitem/code/' . $num);
-		return $retrieved;
-	}
-	
-	function update_item_remotely($num){
-		$record = array('code' => $num);
-        $record = array_merge($record, $_POST);
-		$retrieved = $this->rest->put('/menuitem/code/' . $num, $record);
-		return $retrieved;
-	}
 	
 }
 
