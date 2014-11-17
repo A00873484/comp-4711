@@ -45,7 +45,7 @@ class Welcome extends Application {
             );
             $orders[] = $this1;
         }
-
+        print_r($this->session->all_userdata());
         // and pass these on to the view
         $this->data['orders'] = $orders;
         
