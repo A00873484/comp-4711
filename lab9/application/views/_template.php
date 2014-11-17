@@ -21,9 +21,9 @@ if (!defined('APPPATH'))
     </head>
     <body>
         <div class="container">
-            <div id="topstuff" class="row">
-                <p></p>
-            </div>           
+            
+            <a href="{link}" class="btn btn-large btn-primary">{name}</a><br/><br/>
+                      
             <div id="content">
                 <h1>{title}</h1>
 				<div class="{alerting}">

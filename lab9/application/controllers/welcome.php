@@ -12,7 +12,8 @@
 class Welcome extends Application {
 
     function __construct() {
-        parent::__construct();
+		parent::__construct();
+		
     }
 
     //-------------------------------------------------------------
@@ -22,7 +23,15 @@ class Welcome extends Application {
     function index() {
         $this->data['title'] = 'Jim\'s Joint!';
         $this->data['pagebody'] = 'welcome';
-
+		$this->data['login'] = '_menubar';
+		if($this->session->userdata('userID')){
+			$this->data['name'] = 'logout';
+			$this->data['link'] = '/userlogin/logout';
+		}else{
+			$this->data['name'] = 'login';
+			$this->data['link'] = '/userlogin';
+		}
+		//print_r($this->session->all_userdata());
         // Get all the completed orders
         $completed = $this->orders->some('status','c');
 

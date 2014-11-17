@@ -13,6 +13,7 @@ class Admin extends Application {
 
     function __construct() {
         parent::__construct();
+		$this->restrict('admin');
     }
 	
 	//Displays all of the items without edit options.

@@ -53,6 +53,21 @@ class Application extends CI_Controller {
         }
         return $result;
     }
+	
+	function restrict($roleNeeded=null) {
+		$userRole = $this->session->userdata('userRole');
+		if($roleNeeded != null){
+			if(is_array($roleNeeded)){
+				if(!in_array($userRole, $roleNeeded)){
+					redirect("/");
+					exit;
+				}
+			}else if($userRole != $roleNeeded) {
+				redirect("/");
+				exit;
+			}
+		}
+	}
 }
 
 /* End of file MY_Controller.php */

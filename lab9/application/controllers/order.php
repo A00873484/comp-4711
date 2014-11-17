@@ -13,6 +13,7 @@ class Order extends Application {
 
     function __construct() {
         parent::__construct();
+		$this->restrict(array('admin', 'guest', 'visitor'));
     }
 
     // start a new order
