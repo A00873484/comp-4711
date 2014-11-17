@@ -5,6 +5,6 @@
 ?>
 <ul class="nav">
     {menudata}
-    <li><a href="{link}" class="btn btn-large btn-primary">{name}</a></li>
+    <li><a href="{functionlink}" class="btn btn-large btn-primary">{function}</a></li>
     {/menudata}
 </ul>

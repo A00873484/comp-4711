@@ -15,38 +15,19 @@ class Admin extends Application {
         parent::__construct();
 		$this->restrict('admin');
     }
-	
-	//Displays all of the items without edit options.
-    function display() {
-        $this->data['title'] = 'Jim\'s Joint Administration!';
-        $this->data['pagebody'] = 'admin/show_menu';
-
-        // Get all the completed orders
-        $menuitems = $this->menu->all();
-
-        // Build a multi-dimensional array for reporting
-        $items = array();
-        foreach ($menuitems as $item) {
-            $this1 = array(
-                'code' => $item->code,
-                'name' => $item->name,
-                'description' => $item->description,
-                'picture' => $item->picture
-            );
-            $items[] = $this1;
-        }
-
-        // and pass these on to the view
-        $this->data['items'] = $items;
-        
-        $this->render();
-    }
 
 	//Displays all of the items with edit options. 
     function list2() {
         $this->data['title'] = 'Jim\'s Joint Administration (view 2)!';
         $this->data['pagebody'] = 'admin/listitem';
-
+		if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
+		}else{
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
+		}
+		
         // Get all the completed orders
         $menuitems = $this->menu->all();
         $itemrows = "";
@@ -83,7 +64,14 @@ class Admin extends Application {
     function edit3($code) {
         $this->data['title'] = 'Jim\'s Joint Maintenance!';
         $this->data['pagebody'] = 'admin/edititem';
-        $this->data['code'] = $code;
+        if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
+		}else{
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
+		}
+		$this->data['code'] = $code;
 		$temp = $this->menu->some('code', $code)[0];
 		$this->data['name'] = $temp->name;
 		$this->data['description'] = $temp->description;
@@ -124,6 +112,13 @@ class Admin extends Application {
 	function edit4($code) {
         $this->data['title'] = 'Jim\'s Joint Maintenance!';
 		$this->data['pagebody'] = 'admin/edititem';
+		if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
+		}else{
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
+		}
 		$item = $this->session->userdata('item');
 		if($item){
 			$this->data['code'] = $code;
@@ -198,6 +193,13 @@ class Admin extends Application {
 		$this->load->helper('form_helper');
         $this->data['title'] = 'Jim\'s Joint Maintenance!';
 		$this->data['pagebody'] = 'admin/edit5';
+		if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
+		}else{
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
+		}
 		$item = $this->session->userdata('item');
 		if($item){	
 			$this->data['code'] = makeTextField('Code', 'code', $num, $explain = "The Item ID (can't be changed)", $maxlen = 10, $size = 25, $disabled = true);

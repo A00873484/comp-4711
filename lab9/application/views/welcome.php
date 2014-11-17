@@ -1,6 +1,6 @@
 <p class="lead">
     <a href="/order/neworder" class="btn btn-large btn-primary">Start a new order</a>    
-    <a href="/admin/display" class="btn btn-large btn-primary">Admin</a>    
+    <a href="/" class="btn btn-large btn-primary">Home</a>    
 </p>
 <p>Order summary:</p>
 <table class="table">

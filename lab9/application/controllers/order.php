@@ -13,7 +13,7 @@ class Order extends Application {
 
     function __construct() {
         parent::__construct();
-		$this->restrict(array('admin', 'guest', 'visitor'));
+		$this->restrict(array('admin', 'user', 'visitor'));
     }
 
     // start a new order
@@ -37,7 +37,14 @@ class Order extends Application {
 
         $this->data['pagebody'] = 'show_menu';
         $this->data['order_num'] = $order_num;
-
+		if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
+		}else{
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
+		}
+		
         // get order details for title
         $title = 'Order #' . $order_num . ' (' . number_format($this->orders->total($order_num), 2) . ')';
         $this->data['title'] = $title;
@@ -66,6 +73,13 @@ class Order extends Application {
     function checkout($order_num) {
         $this->data['title'] = 'Checking Out';
         $this->data['pagebody'] = 'show_order';
+		if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
+		}else{
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
+		}
         $this->data['order_num'] = $order_num;
         $this->data['total'] = number_format($this->orders->total($order_num), 2);
 
@@ -90,7 +104,7 @@ class Order extends Application {
         $record->status = 'c';
         $record->total = $this->orders->total($order_num);
         $this->orders->update($record);
-        redirect('/');
+        redirect('/welcome/orders');
     }
 
     // cancel the order

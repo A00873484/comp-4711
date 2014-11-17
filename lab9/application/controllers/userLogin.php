@@ -20,37 +20,47 @@ class Userlogin extends Application {
     //  The normal pages
     //-------------------------------------------------------------
 
+	
+	//loads the login view
     function index() {
         $this->data['title'] = 'login';
         $this->data['pagebody'] = 'login';
-		$this->data['name'] = 'login';
-		$this->data['link'] = '/userlogin';
-		print_r($this->session->all_userdata());
+		if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
+		}else{
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
+		}
 		$this->render();
     }
-	function login($username, $password){
-		$this->users->get();
-	}
 	
+	//checks to see if the username and password are valid and adds the users info to the session if the login was valid, 
+	//if it wasnt valid then it will display an error message. 
 	function submit(){
 		$key = $_POST['username'];
 		$password = md5($_POST['password']);
 		$user = $this->users->get($key);
-		if ($password == (string)$user->password){
-			$this->session->set_userdata('userId', $key);
-			$this->session->set_userdata('userName', $user->name);
-			$this->session->set_userdata('userRole', $user->role);
-			$this->session->sess_update();
-			print_r($this->session->all_userdata());
-			redirect('/');
+		if($user){
+			if ($password == (string)$user->password){
+				$this->session->set_userdata('userId', $key);
+				$this->session->set_userdata('userName', $user->name);
+				$this->session->set_userdata('userRole', $user->role);
+				$this->session->sess_update();
+				redirect('/');
+			}
+			else{
+				$this->errors['login'] = 'Invalid Username or Password';
+				$this->index();
+			}
 		}
 		else{
-			redirect('/userlogin');
-		}
-		
-		
+			$this->errors['login'] = 'Invalid Username or Password';
+			$this->index();
+		}		
 	}
 	
+	//removes the added data from the session then redirects back to the homepage.
 	function logout(){
 		$this->session->sess_destroy();
 		$this->load->helper('url');

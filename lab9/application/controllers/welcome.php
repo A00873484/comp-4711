@@ -20,18 +20,51 @@ class Welcome extends Application {
     //  The normal pages
     //-------------------------------------------------------------
 
+	//Displays all of the items without edit options.
+    
     function index() {
+		$this->data['title'] = 'Jim\'s Joint Administration!';
+        $this->data['pagebody'] = 'admin/show_menu';
+		if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
+		}else{
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
+		}
+		
+        // Get all the completed orders
+        $menuitems = $this->menu->all();
+
+        // Build a multi-dimensional array for reporting
+        $items = array();
+        foreach ($menuitems as $item) {
+            $this1 = array(
+                'code' => $item->code,
+                'name' => $item->name,
+                'description' => $item->description,
+                'picture' => $item->picture
+            );
+            $items[] = $this1;
+        }
+
+        // and pass these on to the view
+        $this->data['items'] = $items;
+        
+        $this->render();
+	
+    }
+	
+	function orders(){
         $this->data['title'] = 'Jim\'s Joint!';
         $this->data['pagebody'] = 'welcome';
-		$this->data['login'] = '_menubar';
-		if($this->session->userdata('userID')){
-			$this->data['name'] = 'logout';
-			$this->data['link'] = '/userlogin/logout';
+		if($this->session->userdata('userId')){
+			$this->data['function'] = 'logout';
+			$this->data['functionlink'] = '/userlogin/logout';
 		}else{
-			$this->data['name'] = 'login';
-			$this->data['link'] = '/userlogin';
+			$this->data['function'] = 'login';
+			$this->data['functionlink'] = '/userlogin';
 		}
-		//print_r($this->session->all_userdata());
         // Get all the completed orders
         $completed = $this->orders->some('status','c');
 
@@ -45,13 +78,12 @@ class Welcome extends Application {
             );
             $orders[] = $this1;
         }
-        print_r($this->session->all_userdata());
         // and pass these on to the view
         $this->data['orders'] = $orders;
         
         $this->render();
-    }
-
+	}
+	
 }
 
 /* End of file welcome.php */

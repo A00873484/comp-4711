@@ -22,7 +22,7 @@ if (!defined('APPPATH'))
     <body>
         <div class="container">
             
-            <a href="{link}" class="btn btn-large btn-primary">{name}</a><br/><br/>
+            <a href="{functionlink}" class="btn btn-large btn-primary">{function}</a><br/><br/>
                       
             <div id="content">
                 <h1>{title}</h1>
