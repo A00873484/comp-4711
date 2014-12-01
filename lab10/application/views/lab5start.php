@@ -1,3 +1,7 @@
+<span class='st_facebook_large' displayText='Facebook'></span>
+<span class='st_twitter_large' displayText='Tweet'></span>
+<span class='st_linkedin_large' displayText='LinkedIn'></span>
+<span class='st_email_large' displayText='Email'></span>
 <p class="lead">
     <a href="/order/neworder" class="btn btn-large btn-primary">Start a new order</a>    
     <a href="/admin/display" class="btn btn-large btn-primary">Admin</a>    
