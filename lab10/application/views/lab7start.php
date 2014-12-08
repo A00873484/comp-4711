@@ -1,19 +1,10 @@
 <a class="twitter-follow-button"
-  href="https://twitter.com/twitterdev"
+  href="https://twitter.com/bcit"
   data-show-count="false"
   data-lang="en">
-Follow @twitterdev
+Follow @bcit
 </a>
-<script type="text/javascript">
-window.twttr = (function (d, s, id) {
-  var t, js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src= "https://platform.twitter.com/widgets.js";
-  fjs.parentNode.insertBefore(js, fjs);
-  return window.twttr || (t = { _e: [], ready: function (f) { t._e.push(f) } });
-}(document, "script", "twitter-wjs"));
-</script>
+<script type="text/javascript" src = "/assets/js/twitter.js"></script>
 <p class="lead">Ferry Travel Planer</p>
 
 <form name="myform" action="/planner/get_ports_code/" method="post">

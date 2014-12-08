@@ -18,8 +18,12 @@ if (!defined('APPPATH'))
         <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
         <link href="/assets/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
 		<script type="text/javascript">var switchTo5x=true;</script>
-		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-		<script type="text/javascript">stLight.options({publisher: "f55eefeb-1892-4a18-830d-6e06c989853f", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+		<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js" async="true"></script>
+		<script type="text/javascript">
+		window.onload = function() {
+			stLight.options({publisher: "f55eefeb-1892-4a18-830d-6e06c989853f", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+		};
+		</script>
     </head>
     <body>
         <div id="wrapper">

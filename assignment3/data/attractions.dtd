@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	COMP 4711, Fall 2014, Assignment 3
+	Web Data
+
+	Created by: Jay Huang, Daniel Engelhard
+-->
+
+<!-- BC Ferries schedule -->
+<!ELEMENT attractions(where, description, modified-date, image1, image2, image3)>
+
+<!-- location of the Attraction -->
+<!ELEMENT where (#PCDATA)>
+
+<!-- Description of the Attraction -->
+<!ELEMENT description (#PCDATA)>
+
+<!-- last date attraction was modified -->
+<!ELEMENT modified-date (#PCDATA)>
+
+<!-- first image of the Attraction -->
+<!ELEMENT image1 (#PCDATA)>
+
+<!-- second image of the Attraction -->
+<!ELEMENT image2 (#PCDATA)>
+
+<!-- third image of the Attraction -->
+<!ELEMENT image3 (#PCDATA)>
