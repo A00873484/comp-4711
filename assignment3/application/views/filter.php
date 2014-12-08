@@ -31,35 +31,30 @@
 					</div>
 					<div class="container">
 						<div class="row">
+							<form action="/filter/submit" method="post" enctype="multipart/form-data">
+								{audience}{price}{submit}
+							<form/>
+						</div>
+					</div>
+					<div>
+						<br/><br/><br/><br/>
+					</div>
+					<div class="container">
+						<div class="row">
 							<div class="twelve columns package-item-class package-item-class-1 mb35">
 								<div class="package-item-holder">
 									<div class="row">
 										<div class="four columns gdl-package-grid2">
-											<div class="package-content-wrapper">
-												<div class="package-thumbnail-outer-wrapper">
-													<h2><div class="center">Play</div><h2/>
-													{play}
-													<div class="clear"></div>
-												</div>
-											</div>
+											<h2><div class="center">Play</div><h2/>
+											{play}	
 										</div>
 										<div class="four columns gdl-package-grid2">
-											<div class="package-content-wrapper">
-												<div class="package-thumbnail-outer-wrapper">
-													<h2><div class="row center">Eat</div><h2/>
-													{eat}
-													<div class="clear"></div>
-												</div>
-											</div>
+											<h2><div class="row center">Eat</div><h2/>
+											{eat}
 										</div>
 										<div class="four columns gdl-package-grid2">
-											<div class="package-content-wrapper">
-												<div class="package-thumbnail-outer-wrapper">
-													<h2><div class="row center">Sleep</div><h2/>
-													{sleep}
-													<div class="clear"></div>
-												</div>
-											</div>
+											<h2><div class="row center">Sleep</div><h2/>
+											{sleep}
 										</div>
 										
 										<div class="clear"></div>
