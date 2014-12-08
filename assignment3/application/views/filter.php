@@ -27,7 +27,7 @@
 						</div>
 					</div>
 					<div>
-						<br/><br/><br/><br/>
+						<br/><br/>
 					</div>
 					<div class="container">
 						<div class="row">

@@ -41,33 +41,18 @@ class Filter extends Application {
 		$targetOptions['family'] = 'family';
 		$targetOptions['adventurous'] = 'adventurous';
 		$targetOptions['relaxed'] = 'relaxed';
-		$attraction = $this->session->userdata('attraction');
+		$attraction = $this->session->userdata('item');
+		//print_r($this->session->userdata);
+		//print_r($_POST);
+			
 		if($attraction){
-			$price = makeComboField('Price Range', 'price_range', $attraction['price_range'], $priceOptions, $explain = "Filters by Category", $maxlen = 40, $size = 25, $disabled = false);
-			$this->data['price'] = $price;
-			$audience = makeComboField('Target Audience', 'target_audience', $attraction['target_audience'], $targetOptions, $explain = "Filters by Category", $maxlen = 40, $size = 25, $disabled = false);
-			$this->data['audience'] = $audience;
+			$this->data['price'] = makeComboField('Price Range', 'price_range', $attraction['price_range'], $priceOptions, $explain = "Filters by Category", $maxlen = 40, $size = 25, $disabled = false);
+			$this->data['audience'] = makeComboField('Target Audience', 'target_audience', $attraction['target_audience'], $targetOptions, $explain = "Filters by Category", $maxlen = 40, $size = 25, $disabled = false);
 			$this->data['submit'] = makeSubmitButton('Submit', 'submit');
-				
 			// build the list of options, to pass on to our view
-			$source = $this->attractions->some('category', 'eat');
-			if($price != 'none')
-				$source = $source->some('price_range', $price);
-			if($audience != 'none')
-				$source = $source->some('target_audience', $audience);
-			$this->data['eat'] = $this->arrayOfButtonPictures($source);
-			$source = $this->attractions->some('category', 'play');
-			if($price != 'none')
-				$source = $source->some('price_range', $price);
-			if($audience != 'none')
-				$source = $source->some('target_audience', $audience);
-			$this->data['play'] = $this->arrayOfButtonPictures($source);
-			$source = $this->attractions->some('category', 'sleep');
-			if($price != 'none')
-				$source = $source->some('price_range', $price);
-			if($audience != 'none')
-				$source = $source->some('target_audience', $audience);
-			$this->data['sleep'] = $this->arrayOfButtonPictures($source);
+			$this->filter($attraction['price_range'], $attraction['target_audience'], 'play');
+			$this->filter($attraction['price_range'], $attraction['target_audience'], 'eat');
+			$this->filter($attraction['price_range'], $attraction['target_audience'], 'sleep');
 		}
 		else{
 			$price = makeComboField('Price Range', 'price_range', $priceOptions['none'], $priceOptions, $explain = "Filters by Category", $maxlen = 40, $size = 25, $disabled = false);
@@ -77,38 +62,55 @@ class Filter extends Application {
 			$this->data['submit'] = makeSubmitButton('Submit', 'submit');
 				
 			// build the list of options, to pass on to our view
-			$source = $this->attractions->some('category', 'eat');
-			$this->data['eat'] = $this->arrayOfButtonPictures($source);
-			$source = $this->attractions->some('category', 'play');
-			$this->data['play'] = $this->arrayOfButtonPictures($source);
-			$source = $this->attractions->some('category', 'sleep');
-			$this->data['sleep'] = $this->arrayOfButtonPictures($source);
+			$this->filter($attraction['price_range'], $attraction['target_audience'], 'play');
+			$this->filter($attraction['price_range'], $attraction['target_audience'], 'eat');
+			$this->filter($attraction['price_range'], $attraction['target_audience'], 'sleep');
 		}
 		$this->render();
     }
+	
+	function filter($price, $audience, $string){
+		$source = $this->attractions->some('category', $string);
+		$temp = array();
+		foreach($source as $anItem){
+			if(($price == $anItem->price_range || $price == 'none') && ($audience == $anItem->target_audience || $audience == 'none')){
+				$temp[] = array(
+					'id' => $anItem->id,
+					'name' => $anItem->name,
+					'category' => $anItem->category,
+					'description' => $anItem->description,
+					'price_range' => $anItem->price_range,
+					'target_audience' => $anItem->target_audience
+				);
+			}	
+		}
+		$this->data[$string] = $this->arrayOfButtonPictures($temp);
+		return $temp;
+	}
 	
 	function submit(){
 		$edited = $_POST;
 		$this->session->unset_userdata('item');
 		$this->session->set_userdata('item', $edited);
 		$item = $this->session->userdata('item');
+		// print_r($this->session->unset_userdata('item'));
 		$this->index();
 	}
 	
 	function arrayOfButtonPictures($source){
 		$options = "";
         foreach ($source as $record) {
-            htmlspecialchars($record->name, ENT_QUOTES, 'UTF-8');
-            htmlspecialchars($record->category, ENT_QUOTES, 'UTF-8');
+            htmlspecialchars($record['name'], ENT_QUOTES, 'UTF-8');
+            htmlspecialchars($record['category'], ENT_QUOTES, 'UTF-8');
 			$xmlDoc = new DOMDocument();
-			$xmlDoc->loadXML($record->description);
+			$xmlDoc->loadXML($record['description']);
 			$x = $xmlDoc->documentElement;
 			foreach ($x->childNodes AS $item)
 			{
 				if($item->nodeName == 'image1'){
-					$record->image = $item->nodeValue;
+					$record['image'] = $item->nodeValue;
 				}else if($item->nodeName == 'where'){
-					$record->where = $item->nodeValue;
+					$record['where'] = $item->nodeValue;
 				}
 			}
             $options .= $this->parser->parse('filter2', $record, true);
